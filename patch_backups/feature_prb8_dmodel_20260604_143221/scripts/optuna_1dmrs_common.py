@@ -17,13 +17,13 @@ if str(SRC_ROOT) not in sys.path:
 from upair5g.config import load_config, set_cfg  # noqa: E402
 
 VARIANTS: dict[str, dict[str, Any]] = {
-    "main_d256_b4_r2": {"model.d_model": 256, "model.num_blocks": 4, "model.mlp_ratio": 2.0},
-    "shallow_d256_b2_r2": {"model.d_model": 256, "model.num_blocks": 2, "model.mlp_ratio": 2.0},
-    "deep_d256_b6_r2": {"model.d_model": 256, "model.num_blocks": 6, "model.mlp_ratio": 2.0},
-    "narrow_d192_b4_r2": {"model.d_model": 192, "model.num_blocks": 4, "model.mlp_ratio": 2.0},
-    "wide_d320_b4_r2": {"model.d_model": 320, "model.num_blocks": 4, "model.mlp_ratio": 2.0},
-    "wide_deep_d320_b6_r2": {"model.d_model": 320, "model.num_blocks": 6, "model.mlp_ratio": 2.0},
-    "mlpwide_d256_b4_r4": {"model.d_model": 256, "model.num_blocks": 4, "model.mlp_ratio": 4.0},
+    "main_d96_b4_r2": {"model.d_model": 96, "model.num_blocks": 4, "model.mlp_ratio": 2.0},
+    "shallow_d96_b2_r2": {"model.d_model": 96, "model.num_blocks": 2, "model.mlp_ratio": 2.0},
+    "deep_d96_b6_r2": {"model.d_model": 96, "model.num_blocks": 6, "model.mlp_ratio": 2.0},
+    "narrow_d64_b4_r2": {"model.d_model": 64, "model.num_blocks": 4, "model.mlp_ratio": 2.0},
+    "wide_d128_b4_r2": {"model.d_model": 128, "model.num_blocks": 4, "model.mlp_ratio": 2.0},
+    "wide_deep_d128_b6_r2": {"model.d_model": 128, "model.num_blocks": 6, "model.mlp_ratio": 2.0},
+    "mlpwide_d96_b4_r4": {"model.d_model": 96, "model.num_blocks": 4, "model.mlp_ratio": 4.0},
 }
 
 SUGGESTED_PARAM_NAMES = {
@@ -532,7 +532,7 @@ def add_common_cli_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--val-steps", type=int, default=96)
     parser.add_argument("--val-ebno-db", type=parse_float_list, default=[-4.0, -2.0, 0.0, 2.0, 4.0])
     parser.add_argument("--val-user-counts", type=parse_int_list, default=[1, 2, 3, 4])
-    parser.add_argument("--val-user-count-weights", type=parse_float_list, default=[1.0, 3.0, 6.0, 10.0])
+    parser.add_argument("--val-user-count-weights", type=parse_float_list, default=[1.0, 2.0, 3.0, 4.0])
     parser.add_argument("--train-user-count-weights", type=parse_float_list, default=[1.0, 3.0, 6.0, 10.0])
     parser.add_argument("--train-ebno-min", type=float, default=-6.0)
     parser.add_argument("--train-ebno-max", type=float, default=5.0)

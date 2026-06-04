@@ -4,7 +4,7 @@ from typing import Any
 
 import tensorflow as tf
 
-from .builders import extract_pilot_mask_per_stream
+from .builders import extract_pilot_mask
 from .compat import safe_call_variants
 from .utils import (
     btfnu_to_tensor7,
@@ -118,20 +118,12 @@ class UPAIRChannelEstimator(tf.keras.Model):
         self.num_rx_ant = int(cfg["channel"]["num_rx_ant"])
         self.max_num_users = int(cfg.get("multiuser", {}).get("max_num_users", 1))
         self.d_model = int(cfg["model"]["d_model"])
-        model_cfg = cfg.get("model", {})
-        self.use_noise_feature = bool(model_cfg.get("use_noise_feature", True))
-        self.use_pilot_mask_feature = bool(model_cfg.get("use_pilot_mask_feature", True))
-        self.pilot_mask_mode = str(model_cfg.get("pilot_mask_mode", "per_stream")).lower()
-        self.error_feature_mode = str(model_cfg.get("error_feature_mode", "per_user")).lower()
-        self.residual_scale = float(model_cfg.get("residual_scale", 0.35))
+        self.use_noise_feature = bool(cfg["model"]["use_noise_feature"])
+        self.use_pilot_mask_feature = bool(cfg["model"]["use_pilot_mask_feature"])
+        self.residual_scale = float(cfg["model"]["residual_scale"])
         self.eps = 1e-6
 
-        per_stream_mask = self.pilot_mask_mode in {"per_stream", "per_user", "stream", "user"}
-        per_user_error = self.error_feature_mode in {"per_user", "per_stream", "user", "stream"}
-        self.pilot_mask_channels = self.max_num_users if (self.use_pilot_mask_feature and per_stream_mask) else int(self.use_pilot_mask_feature)
-        self.error_feature_channels = self.max_num_users if per_user_error else 1
-
-        extra_channels = self.error_feature_channels + int(self.use_noise_feature) + self.pilot_mask_channels
+        extra_channels = 1 + int(self.use_noise_feature) + int(self.use_pilot_mask_feature)
         if self.max_num_users > 1:
             input_channels = 2 * self.num_rx_ant * self.max_num_users + 2 * self.num_rx_ant + extra_channels
         else:
@@ -169,11 +161,11 @@ class UPAIRChannelEstimator(tf.keras.Model):
             kernel_size=1,
             padding="same",
             kernel_initializer="zeros",
-            bias_initializer="zeros",
+            bias_initializer=tf.keras.initializers.Constant(-4.0),
             name="err_head",
         )
 
-        self.pilot_mask = tf.cast(extract_pilot_mask_per_stream(resource_grid), tf.float32)
+        self.pilot_mask = tf.cast(extract_pilot_mask(resource_grid), tf.float32)
         self.input_channels = input_channels
 
     def _finalize_build_after_direct_forward(self) -> None:
@@ -210,60 +202,14 @@ class UPAIRChannelEstimator(tf.keras.Model):
             raise ValueError("LS estimator must return (h_hat, err_var).")
         return tf.convert_to_tensor(out[0]), tf.convert_to_tensor(out[1])
 
-    def _pad_feature_dim(self, x: tf.Tensor, target_channels: int) -> tf.Tensor:
-        x = tf.convert_to_tensor(x)
-        if x.shape.rank != 4:
-            raise ValueError(f"Expected rank-4 feature map [B,T,F,C], got rank {x.shape.rank}.")
-        target_channels = int(target_channels)
-        pad_channels = tf.maximum(target_channels - tf.shape(x)[-1], 0)
-        paddings = tf.stack(
-            [
-                tf.constant([0, 0], dtype=tf.int32),
-                tf.constant([0, 0], dtype=tf.int32),
-                tf.constant([0, 0], dtype=tf.int32),
-                tf.stack([tf.constant(0, dtype=tf.int32), tf.cast(pad_channels, tf.int32)]),
-            ]
-        )
-        return tf.pad(x, paddings)[..., :target_channels]
-
-    def _pad_mask_streams(self, mask: tf.Tensor, target_streams: int) -> tf.Tensor:
-        mask = tf.convert_to_tensor(mask)
-        if mask.shape.rank != 3:
-            raise ValueError(f"Expected rank-3 pilot mask [T,F,S], got rank {mask.shape.rank}.")
-        target_streams = int(target_streams)
-        pad_streams = tf.maximum(target_streams - tf.shape(mask)[-1], 0)
-        paddings = tf.stack(
-            [
-                tf.constant([0, 0], dtype=tf.int32),
-                tf.constant([0, 0], dtype=tf.int32),
-                tf.stack([tf.constant(0, dtype=tf.int32), tf.cast(pad_streams, tf.int32)]),
-            ]
-        )
-        return tf.pad(mask, paddings)[..., :target_streams]
-
-    def _pilot_mask_for_batch(
-        self,
-        pilot_mask: tf.Tensor | None,
-        batch: tf.Tensor,
-        time: tf.Tensor,
-        freq: tf.Tensor,
-        *,
-        collapse: bool = False,
-    ) -> tf.Tensor:
+    def _pilot_mask_for_batch(self, pilot_mask: tf.Tensor | None, batch: tf.Tensor, time: tf.Tensor, freq: tf.Tensor) -> tf.Tensor:
         mask = tf.cast(tf.convert_to_tensor(pilot_mask if pilot_mask is not None else self.pilot_mask), tf.float32)
         if mask.shape.rank == 2:
             mask = mask[..., tf.newaxis]
         if mask.shape.rank != 3:
             raise ValueError(f"Expected pilot mask rank 2 or 3, got {mask.shape.rank}.")
-
-        per_stream = self.pilot_mask_mode in {"per_stream", "per_user", "stream", "user"}
-        if collapse or not per_stream:
-            mask = tf.reduce_max(mask, axis=-1, keepdims=True)
-            channels = 1
-        else:
-            mask = self._pad_mask_streams(mask, self.max_num_users)
-            channels = self.max_num_users
-        return tf.broadcast_to(mask[tf.newaxis, ...], [batch, time, freq, channels])
+        mask = tf.reduce_max(mask, axis=-1, keepdims=True)
+        return tf.broadcast_to(mask[tf.newaxis, ...], [batch, time, freq, 1])
 
     def _build_features(
         self,
@@ -276,35 +222,23 @@ class UPAIRChannelEstimator(tf.keras.Model):
         y_btfnc = y_to_btfnc(y)
 
         err_bc = broadcast_like_err(err_ls, h_ls)
-        per_user_error = self.error_feature_mode in {"per_user", "per_stream", "user", "stream"}
         if self.max_num_users > 1:
             h_ls_btfnu = tensor7_to_btfnu(h_ls)
             err_btfnu = tensor7_to_btfnu(err_bc)
             h_feat = pad_user_dim(h_ls_btfnu, self.max_num_users)
+            err_feat = pad_user_dim(err_btfnu, self.max_num_users)
             b = tf.shape(y_btfnc)[0]
             t = tf.shape(y_btfnc)[1]
             f = tf.shape(y_btfnc)[2]
             h_ri = complex_to_ri_channels(tf.reshape(h_feat, [b, t, f, self.num_rx_ant * self.max_num_users]))
-            if per_user_error:
-                # Sionna's err_var usually has one receive-error dimension.  Average that
-                # dimension but keep the user/stream dimension explicit: [B,T,F,Umax].
-                err_raw_btfnu = tensor7_to_btfnu(err_ls)
-                err_user_map = tf.reduce_mean(err_raw_btfnu, axis=-2)
-                err_map = self._pad_feature_dim(err_user_map, self.max_num_users)
-            else:
-                err_feat = pad_user_dim(err_btfnu, self.max_num_users)
-                err_map = tf.reduce_mean(err_feat, axis=[-2, -1], keepdims=False)[..., tf.newaxis]
+            err_map = tf.reduce_mean(err_feat, axis=[-2, -1], keepdims=False)[..., tf.newaxis]
         else:
             h_ls_btfnu = tensor7_to_btfnu(h_ls)
             err_btfnu = tensor7_to_btfnu(err_bc)
             h_ls_btfnc = tf.squeeze(h_ls_btfnu, axis=-1)
+            err_btfnc = tf.squeeze(err_btfnu, axis=-1)
             h_ri = complex_to_ri_channels(h_ls_btfnc)
-            if per_user_error:
-                err_raw_btfnu = tensor7_to_btfnu(err_ls)
-                err_map = tf.reduce_mean(err_raw_btfnu, axis=-2)
-            else:
-                err_btfnc = tf.squeeze(err_btfnu, axis=-1)
-                err_map = tf.reduce_mean(err_btfnc, axis=-1, keepdims=True)
+            err_map = tf.reduce_mean(err_btfnc, axis=-1, keepdims=True)
 
         features = [
             h_ri,
@@ -328,7 +262,7 @@ class UPAIRChannelEstimator(tf.keras.Model):
         b = tf.shape(z)[0]
         t = tf.shape(z)[1]
         f = tf.shape(z)[2]
-        mask = self._pilot_mask_for_batch(pilot_mask, b, t, f, collapse=True)
+        mask = self._pilot_mask_for_batch(pilot_mask, b, t, f)
         denom = tf.reduce_sum(mask, axis=[1, 2], keepdims=False) + 1e-6
         pooled = tf.reduce_sum(z * mask, axis=[1, 2], keepdims=False) / denom
         return self.prompt_mlp(pooled)
@@ -363,11 +297,7 @@ class UPAIRChannelEstimator(tf.keras.Model):
         err_anchor = pad_user_dim(err_btfnu, self.max_num_users)
         h_hat_btfnu = h_anchor + tf.cast(self.residual_scale, residual.dtype) * residual
         err_delta = tf.reshape(err_delta, [b, t, f, self.num_rx_ant, self.max_num_users])
-        # Multiplicative positive correction.  With the zero-initialized err_head,
-        # this starts exactly from the LS error variance instead of adding
-        # softplus(-4) to it.
-        err_scale = tf.exp(tf.clip_by_value(err_delta, -6.0, 6.0))
-        err_hat_btfnu = tf.maximum(err_anchor * err_scale, tf.cast(self.eps, err_anchor.dtype))
+        err_hat_btfnu = err_anchor + tf.nn.softplus(err_delta) + self.eps
 
         actual_users = tf.shape(h_ls_btfnu)[-1]
         h_hat_btfnu = h_hat_btfnu[..., :actual_users]

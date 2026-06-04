@@ -1,5 +1,5 @@
 experiment:
-  name: rx16_prb8_1dmrs_u3
+  name: rx16_prb12_1dmrs_u3
   output_root: TWC_plots_comprehensive/runs
 system:
   seed: 7
@@ -50,8 +50,8 @@ multiuser:
 pusch:
   carrier_frequency_hz: 3.5e9
   subcarrier_spacing_khz: 30
-  n_size_grid: 8
-  n_size_bwp: 8
+  n_size_grid: 12
+  n_size_bwp: 12
   cyclic_prefix: normal
   mapping_type: A
   symbol_allocation:
@@ -132,7 +132,7 @@ rf_impairments:
   eval:
     mode: cfo_and_phase_noise
 model:
-  d_model: 256
+  d_model: 96
   num_blocks: 4
   num_heads: 4
   mlp_ratio: 2.0
@@ -140,9 +140,6 @@ model:
   residual_scale: 0.35
   use_noise_feature: true
   use_pilot_mask_feature: true
-  pilot_mask_mode: per_stream
-  error_feature_mode: per_user
-  error_variance_update: multiplicative
 training:
   steps: 20000
   resume: true
@@ -180,9 +177,9 @@ training:
   - 4
   val_user_count_weights:
   - 1.0
+  - 2.0
   - 3.0
-  - 6.0
-  - 10.0
+  - 4.0
   val_microbatch_size: 16
   val_memory_cleanup_every_microbatch: true
   learning_rate_polynomial_power: 1.0

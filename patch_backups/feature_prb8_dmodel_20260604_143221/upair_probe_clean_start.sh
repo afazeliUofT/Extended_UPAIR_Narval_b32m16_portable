@@ -64,22 +64,8 @@ else
 fi
 
 upair_ensure_venv
-python - <<'PY'
-from __future__ import annotations
-from pathlib import Path
-
-failed = False
-for root in ("src", "scripts"):
-    for path in Path(root).rglob("*.py"):
-        try:
-            source = path.read_text(encoding="utf-8")
-            compile(source, str(path), "exec")
-        except SyntaxError as exc:
-            print(f"[SYNTAX-FAIL] {path}: {exc}")
-            failed = True
-raise SystemExit(1 if failed else 0)
-PY
-check_ok "Python syntax compile passed for src/ and scripts/ without writing __pycache__"
+python -m compileall -q src scripts
+check_ok "Python syntax compile passed for src/ and scripts/"
 
 for entry in \
   scripts/run_optuna_1dmrs_structure_isolated.py \
@@ -114,7 +100,7 @@ grep -q -- '--require-optuna-best' upair_submit_train_eval_all.sh \
   && check_ok "train/eval wrapper requires external Optuna best parameters" \
   || check_fail "train/eval wrapper does not force --require-optuna-best"
 
-grep -q 'clean_b32_prb8_d256_u34610_1dmrs_stageB' upair_submit_train_eval_all.sh \
+grep -q 'clean_b32_iso_u34610_1dmrs_stageB' upair_submit_train_eval_all.sh \
   && check_ok "train/eval wrapper is wired to Stage-B prefix" \
   || check_fail "train/eval wrapper is not wired to Stage-B prefix"
 

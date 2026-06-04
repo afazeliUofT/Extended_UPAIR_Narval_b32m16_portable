@@ -23,58 +23,58 @@ from upair5g.training import train_model  # noqa: E402
 
 
 VARIANTS: dict[str, dict[str, Any]] = {
-    "main_d256_b4_r2": {
-        "label": "d=256, L=4, r=2",
+    "main_d96_b4_r2": {
+        "label": "d=96, L=4, r=2",
         "overrides": {
-            "model.d_model": 256,
+            "model.d_model": 96,
             "model.num_blocks": 4,
             "model.mlp_ratio": 2.0,
         },
     },
-    "shallow_d256_b2_r2": {
-        "label": "d=256, L=2, r=2",
+    "shallow_d96_b2_r2": {
+        "label": "d=96, L=2, r=2",
         "overrides": {
-            "model.d_model": 256,
+            "model.d_model": 96,
             "model.num_blocks": 2,
             "model.mlp_ratio": 2.0,
         },
     },
-    "deep_d256_b6_r2": {
-        "label": "d=256, L=6, r=2",
+    "deep_d96_b6_r2": {
+        "label": "d=96, L=6, r=2",
         "overrides": {
-            "model.d_model": 256,
+            "model.d_model": 96,
             "model.num_blocks": 6,
             "model.mlp_ratio": 2.0,
         },
     },
-    "narrow_d192_b4_r2": {
-        "label": "d=192, L=4, r=2",
+    "narrow_d64_b4_r2": {
+        "label": "d=64, L=4, r=2",
         "overrides": {
-            "model.d_model": 192,
+            "model.d_model": 64,
             "model.num_blocks": 4,
             "model.mlp_ratio": 2.0,
         },
     },
-    "wide_d320_b4_r2": {
-        "label": "d=320, L=4, r=2",
+    "wide_d128_b4_r2": {
+        "label": "d=128, L=4, r=2",
         "overrides": {
-            "model.d_model": 320,
+            "model.d_model": 128,
             "model.num_blocks": 4,
             "model.mlp_ratio": 2.0,
         },
     },
-    "wide_deep_d320_b6_r2": {
-        "label": "d=320, L=6, r=2",
+    "wide_deep_d128_b6_r2": {
+        "label": "d=128, L=6, r=2",
         "overrides": {
-            "model.d_model": 320,
+            "model.d_model": 128,
             "model.num_blocks": 6,
             "model.mlp_ratio": 2.0,
         },
     },
-    "mlpwide_d256_b4_r4": {
-        "label": "d=256, L=4, r=4",
+    "mlpwide_d96_b4_r4": {
+        "label": "d=96, L=4, r=4",
         "overrides": {
-            "model.d_model": 256,
+            "model.d_model": 96,
             "model.num_blocks": 4,
             "model.mlp_ratio": 4.0,
         },
@@ -101,7 +101,7 @@ DMRS_CASES: dict[str, dict[str, Any]] = {
 
 
 OPTUNA_BEST_1DMRS: dict[str, dict[str, Any]] = {
-    "main_d256_b4_r2": {
+    "main_d96_b4_r2": {
         "system.batch_size_train": 32,
         "system.batch_size_eval": 32,
         "training.learning_rate": 0.0005950487024755413,
@@ -110,7 +110,7 @@ OPTUNA_BEST_1DMRS: dict[str, dict[str, Any]] = {
         "model.dropout": 0.0010714912918497743,
         "model.residual_scale": 0.39417978357077454,
     },
-    "shallow_d256_b2_r2": {
+    "shallow_d96_b2_r2": {
         "system.batch_size_train": 32,
         "system.batch_size_eval": 32,
         "training.learning_rate": 0.0005950487024755413,
@@ -119,7 +119,7 @@ OPTUNA_BEST_1DMRS: dict[str, dict[str, Any]] = {
         "model.dropout": 0.0010714912918497743,
         "model.residual_scale": 0.39417978357077454,
     },
-    "deep_d256_b6_r2": {
+    "deep_d96_b6_r2": {
         "system.batch_size_train": 32,
         "system.batch_size_eval": 32,
         "training.learning_rate": 0.0005950487024755413,
@@ -128,7 +128,7 @@ OPTUNA_BEST_1DMRS: dict[str, dict[str, Any]] = {
         "model.dropout": 0.0010714912918497743,
         "model.residual_scale": 0.39417978357077454,
     },
-    "narrow_d192_b4_r2": {
+    "narrow_d64_b4_r2": {
         "system.batch_size_train": 32,
         "system.batch_size_eval": 32,
         "training.learning_rate": 0.0006975764648386961,
@@ -137,7 +137,7 @@ OPTUNA_BEST_1DMRS: dict[str, dict[str, Any]] = {
         "model.dropout": 0.06909454442449153,
         "model.residual_scale": 0.6447495210807277,
     },
-    "wide_d320_b4_r2": {
+    "wide_d128_b4_r2": {
         "system.batch_size_train": 32,
         "system.batch_size_eval": 32,
         "training.learning_rate": 0.0005950487024755413,
@@ -146,7 +146,7 @@ OPTUNA_BEST_1DMRS: dict[str, dict[str, Any]] = {
         "model.dropout": 0.0010714912918497743,
         "model.residual_scale": 0.39417978357077454,
     },
-    "wide_deep_d320_b6_r2": {
+    "wide_deep_d128_b6_r2": {
         "system.batch_size_train": 32,
         "system.batch_size_eval": 32,
         "training.learning_rate": 0.0005950487024755413,
@@ -155,7 +155,7 @@ OPTUNA_BEST_1DMRS: dict[str, dict[str, Any]] = {
         "model.dropout": 0.0010714912918497743,
         "model.residual_scale": 0.39417978357077454,
     },
-    "mlpwide_d256_b4_r4": {
+    "mlpwide_d96_b4_r4": {
         "system.batch_size_train": 32,
         "system.batch_size_eval": 32,
         "training.learning_rate": 0.0005950487024755413,
@@ -305,7 +305,7 @@ def _apply_optuna_best_1dmrs(
     variant_name: str,
     dmrs_case: str,
     storage_dir: str | Path | None = None,
-    study_prefix: str = "clean_b32_prb8_d256_u34610_1dmrs_stageC",
+    study_prefix: str = "clean_b32_iso_u34610_1dmrs_stageC",
     require_external: bool = False,
 ) -> None:
     if dmrs_case != "1dmrs":
@@ -376,7 +376,7 @@ def _eval_cfg(train_cfg: dict[str, Any], variant_name: str, dmrs_case: str, num_
     set_cfg(cfg, "evaluation.compiled_receiver_error_counts", bool(get_cfg(cfg, "evaluation.compiled_receiver_error_counts", True)))
     set_cfg(cfg, "evaluation.memory_cleanup_every_microbatch", bool(get_cfg(cfg, "evaluation.memory_cleanup_every_microbatch", True)))
     set_cfg(cfg, "evaluation.memory_cleanup_every_batches", int(get_cfg(cfg, "evaluation.memory_cleanup_every_batches", 1)))
-    set_cfg(cfg, "evaluation.save_example_batch", variant_name == "main_d256_b4_r2" and num_users == 4)
+    set_cfg(cfg, "evaluation.save_example_batch", variant_name == "main_d96_b4_r2" and num_users == 4)
     return cfg
 
 
@@ -442,13 +442,13 @@ def _copy_curves(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run the 1--4 user comprehensive UPAIR ablation for the configured gNB antenna count.")
     parser.add_argument("--config", default=str(PROJECT_ROOT / "configs" / "twc_comprehensive_mu32_base.yaml"))
-    parser.add_argument("--variants", default="main_d256_b4_r2,shallow_d256_b2_r2,deep_d256_b6_r2,narrow_d192_b4_r2,wide_d320_b4_r2,wide_deep_d320_b6_r2,mlpwide_d256_b4_r4")
+    parser.add_argument("--variants", default="main_d96_b4_r2,shallow_d96_b2_r2,deep_d96_b6_r2,narrow_d64_b4_r2,wide_d128_b4_r2,wide_deep_d128_b6_r2,mlpwide_d96_b4_r4")
     parser.add_argument("--dmrs-cases", default="1dmrs,2dmrs", help="Comma-separated DMRS cases to run. Default: 1dmrs,2dmrs.")
     parser.add_argument("--seeds", default=None, help="Comma-separated random seeds. Defaults to system.seeds in the config.")
     parser.add_argument("--eval-users", default=None, help="Comma-separated evaluation user counts. Overrides multiuser.eval_num_users.")
     parser.add_argument("--use-optuna-best-1dmrs", action="store_true", help="Apply the best 1-DMRS Optuna hyperparameters for each architecture variant.")
     parser.add_argument("--optuna-best-storage-dir", default=str(PROJECT_ROOT / "optuna"), help="Directory containing <prefix>_<variant>.db Optuna files. Missing files fall back to built-in defaults unless --require-optuna-best is set.")
-    parser.add_argument("--optuna-best-study-prefix", default="clean_b32_prb8_d256_u34610_1dmrs_stageC", help="Prefix for per-variant Optuna study and database names.")
+    parser.add_argument("--optuna-best-study-prefix", default="clean_b32_iso_u34610_1dmrs_stageC", help="Prefix for per-variant Optuna study and database names.")
     parser.add_argument("--require-optuna-best", action="store_true", help="Require external Optuna best JSON/DB instead of falling back to built-in recorded best parameters.")
     parser.add_argument("--eval-only", action="store_true", help="Skip training and reuse existing checkpoints.")
     parser.add_argument("--no-global-summary", action="store_true", help="Skip shared combined CSV/manifest writes. Use this for parallel Slurm array workers.")

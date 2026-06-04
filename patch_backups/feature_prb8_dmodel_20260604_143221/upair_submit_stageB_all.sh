@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Submit Stage-A Optuna jobs for all seven 1-DMRS UPAIR variants.
+# Submit Stage-B Optuna promotion jobs for all seven 1-DMRS UPAIR variants.
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck disable=SC1091
@@ -13,29 +13,38 @@ if [[ "${UPAIR_SKIP_SUBMIT_ENV_CHECK:-0}" != "1" ]]; then
 fi
 
 CONFIG="${UPAIR_CONFIG:-${UPAIR_REPO_ROOT}/configs/twc_comprehensive_mu32_base.yaml}"
-[[ -f "${CONFIG}" ]] || { echo "[STAGE-A] Missing config: ${CONFIG}" >&2; exit 1; }
+[[ -f "${CONFIG}" ]] || { echo "[STAGE-B] Missing config: ${CONFIG}" >&2; exit 1; }
 
-PREFIX="${UPAIR_OPTUNA_STAGEA_PREFIX:-clean_b32_prb8_d256_u34610_1dmrs_stageA}"
-TRIALS="${UPAIR_OPTUNA_STAGEA_TRIALS:-30}"
-STEPS="${UPAIR_OPTUNA_STAGEA_STEPS:-6000}"
-MAX_ATTEMPTS="${UPAIR_OPTUNA_STAGEA_MAX_ATTEMPTS:-${TRIALS}}"
-TIME_LIMIT="${UPAIR_TIME_STAGE_A:-12:00:00}"
+A_PREFIX="${UPAIR_OPTUNA_STAGEA_PREFIX:-clean_b32_iso_u34610_1dmrs_stageA}"
+B_PREFIX="${UPAIR_OPTUNA_STAGEB_PREFIX:-clean_b32_iso_u34610_1dmrs_stageB}"
+TRIALS="${UPAIR_OPTUNA_STAGEB_TRIALS:-8}"
+STEPS="${UPAIR_OPTUNA_STAGEB_STEPS:-10000}"
+SOURCE_TOP_K="${UPAIR_OPTUNA_STAGEB_SOURCE_TOP_K:-8}"
+MAX_ATTEMPTS="${UPAIR_OPTUNA_STAGEB_MAX_ATTEMPTS:-${TRIALS}}"
+TIME_LIMIT="${UPAIR_TIME_STAGE_B:-12:00:00}"
 SEED="${UPAIR_SEED:-7}"
 TRAIN_B="${UPAIR_TRAIN_BATCH:-32}"
 VAL_B="${UPAIR_VAL_BATCH:-32}"
 VAL_MB="${UPAIR_VAL_MICROBATCH:-16}"
 
-echo "[STAGE-A] ROOT=${UPAIR_REPO_ROOT}"
-echo "[STAGE-A] VENV=${UPAIR_VENV_PATH}"
-echo "[STAGE-A] PREFIX=${PREFIX} TRIALS=${TRIALS} STEPS=${STEPS}"
+echo "[STAGE-B] ROOT=${UPAIR_REPO_ROOT}"
+echo "[STAGE-B] VENV=${UPAIR_VENV_PATH}"
+echo "[STAGE-B] SOURCE=${A_PREFIX}_<variant> -> TARGET=${B_PREFIX}_<variant>"
 
 while IFS= read -r variant; do
   [[ -n "${variant}" ]] || continue
-  study="${PREFIX}_${variant}"
+  source_study="${A_PREFIX}_${variant}"
+  study="${B_PREFIX}_${variant}"
+  source_db="${UPAIR_REPO_ROOT}/optuna/${source_study}.db"
   db="${UPAIR_REPO_ROOT}/optuna/${study}.db"
+  if [[ ! -f "${source_db}" ]]; then
+    echo "[STAGE-B] Missing Stage-A DB for ${variant}: ${source_db}" >&2
+    echo "[STAGE-B] Submit/resume Stage A first." >&2
+    exit 1
+  fi
   log="${UPAIR_REPO_ROOT}/logs/optuna/${study}_%j.out"
-  jobfile="${UPAIR_REPO_ROOT}/logs/submit/stageA_${variant}.sbatch"
-  job="upairA-$(upair_first_n_chars "${variant}" 14)"
+  jobfile="${UPAIR_REPO_ROOT}/logs/submit/stageB_${variant}.sbatch"
+  job="upairB-$(upair_first_n_chars "${variant}" 14)"
   upair_write_sbatch_header "${jobfile}" "${job}" "${TIME_LIMIT}" "${log}"
   cat >> "${jobfile}" <<SBATCH
 set -euo pipefail
@@ -47,7 +56,10 @@ python -u "${UPAIR_REPO_ROOT}/scripts/run_optuna_1dmrs_structure_isolated.py" \
   --variant "${variant}" \
   --study-name "${study}" \
   --storage "sqlite:///${db}" \
-  --stage A \
+  --stage B \
+  --source-study-name "${source_study}" \
+  --source-storage "sqlite:///${source_db}" \
+  --source-top-k "${SOURCE_TOP_K}" \
   --n-trials "${TRIALS}" \
   --target-total-trials "${TRIALS}" \
   --max-attempts "${MAX_ATTEMPTS}" \
@@ -57,6 +69,6 @@ python -u "${UPAIR_REPO_ROOT}/scripts/run_optuna_1dmrs_structure_isolated.py" \
   --validation-microbatch-size "${VAL_MB}" \
   --seed "${SEED}"
 SBATCH
-  echo "[STAGE-A] submitting ${variant} -> ${study}"
+  echo "[STAGE-B] submitting ${variant} -> ${study}"
   upair_submit_job_script "${jobfile}"
 done < <(upair_variants)
