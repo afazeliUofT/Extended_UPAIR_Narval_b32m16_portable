@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: upair5g
+Version: 0.1.0
+Summary: UPAIR-5G: Universal Prompted Axial In-context Receiver for 5G NR PUSCH
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown

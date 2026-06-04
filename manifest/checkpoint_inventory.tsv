@@ -1,8 +1,0 @@
-size_bytes	size_MB	path
-2740248	2.613	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable.clean_stage_20260518_102421/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/main_d96_b4_r2/checkpoints/best.weights.h5
-4577016	4.365	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable.clean_stage_20260518_102421/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/wide_d128_b4_r2/checkpoints/best.weights.h5
-3331216	3.177	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable.clean_stage_20260518_102421/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/mlpwide_d96_b4_r4/checkpoints/best.weights.h5
-6697152	6.387	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable.clean_stage_20260518_102421/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/wide_deep_d128_b6_r2/checkpoints/best.weights.h5
-1405912	1.341	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable.clean_stage_20260518_102421/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/narrow_d64_b4_r2/checkpoints/best.weights.h5
-3992520	3.808	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable.clean_stage_20260518_102421/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/best.weights.h5
-1485816	1.417	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable.clean_stage_20260518_102421/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/best.weights.h5
