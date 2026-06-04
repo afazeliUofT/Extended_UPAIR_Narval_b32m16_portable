@@ -48,9 +48,11 @@ ESSENTIAL_PARAM_NAMES = {
     "residual_scale",
 }
 STAGE_DEFAULTS: dict[str, dict[str, int]] = {
-    "A": {"steps": 6000, "target_total_trials": 30, "source_top_k": 0},
-    "B": {"steps": 10000, "target_total_trials": 8, "source_top_k": 8},
-    "C": {"steps": 20000, "target_total_trials": 3, "source_top_k": 3},
+    # Smart bounded schedule for the PRB8/d256 package:
+    # Stage A explores broadly but cheaply; Stage B re-runs the best candidates longer.
+    "A": {"steps": 4000, "target_total_trials": 20, "source_top_k": 0},
+    "B": {"steps": 12000, "target_total_trials": 6, "source_top_k": 6},
+    "C": {"steps": 40000, "target_total_trials": 3, "source_top_k": 3},
 }
 
 
@@ -548,13 +550,13 @@ def add_common_cli_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--objective-recent-k", type=int, default=2)
     parser.add_argument("--objective-min-step", type=int, default=1000, help="Validation rows with step <= this value are excluded from the final Optuna objective.")
     parser.add_argument("--seed", type=int, default=7)
-    parser.add_argument("--tpe-startup-trials", type=int, default=12)
+    parser.add_argument("--tpe-startup-trials", type=int, default=8)
     parser.add_argument("--constant-liar", action="store_true")
     parser.add_argument("--pruner", choices=["percentile", "median", "successive_halving", "none"], default="percentile")
     parser.add_argument("--disable-pruning", action="store_true")
     parser.add_argument("--pruner-percentile", type=float, default=25.0)
-    parser.add_argument("--pruner-startup-trials", type=int, default=10)
-    parser.add_argument("--pruner-min-trials", type=int, default=5)
+    parser.add_argument("--pruner-startup-trials", type=int, default=6)
+    parser.add_argument("--pruner-min-trials", type=int, default=4)
     parser.add_argument("--prune-warmup-steps", type=int, default=1000)
     parser.add_argument("--prune-interval-steps", type=int, default=1000)
     parser.add_argument("--memory-cleanup-every-steps", type=int, default=100)

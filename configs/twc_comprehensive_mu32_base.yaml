@@ -144,9 +144,9 @@ model:
   error_feature_mode: per_user
   error_variance_update: multiplicative
 training:
-  steps: 20000
+  steps: 40000
   resume: true
-  checkpoint_every: 500
+  checkpoint_every: 1000
   max_resume_checkpoints: 3
   val_steps: 96
   val_ebno_db:
@@ -156,12 +156,12 @@ training:
   - 2
   - 4
   log_every: 100
-  eval_every: 1000
+  eval_every: 2000
   learning_rate: 0.0003
   learning_rate_schedule: cosine_decay
   learning_rate_final_fraction: 0.05
   learning_rate_decay_rate: 0.96
-  learning_rate_decay_steps: 20000
+  learning_rate_decay_steps: 40000
   learning_rate_restart_first_decay_steps: 2500
   learning_rate_restart_t_mul: 2.0
   learning_rate_restart_m_mul: 0.8

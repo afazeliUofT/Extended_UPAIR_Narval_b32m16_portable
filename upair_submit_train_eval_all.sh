@@ -16,11 +16,11 @@ fi
 CONFIG="${UPAIR_CONFIG:-${UPAIR_REPO_ROOT}/configs/twc_comprehensive_mu32_base.yaml}"
 [[ -f "${CONFIG}" ]] || { echo "[TRAIN-EVAL] Missing config: ${CONFIG}" >&2; exit 1; }
 
-B_PREFIX="${UPAIR_OPTUNA_STAGEB_PREFIX:-clean_b32_prb8_d256_u34610_1dmrs_stageB}"
+B_PREFIX="${UPAIR_OPTUNA_STAGEB_PREFIX:-clean_b32_prb8_d256_40k_smart_u34610_1dmrs_stageB}"
 DMRS_CASES="${UPAIR_DMRS_CASES:-1dmrs}"
 SEEDS="${UPAIR_SEEDS:-${UPAIR_SEED:-7}}"
 EVAL_USERS="${UPAIR_EVAL_USERS:-1,2,3,4}"
-TIME_LIMIT="${UPAIR_TIME_TRAIN_EVAL:-12:00:00}"
+TIME_LIMIT="${UPAIR_TIME_TRAIN_EVAL:-30:00:00}"
 FORCE_FLAG=""
 if [[ "${UPAIR_FORCE:-0}" == "1" ]]; then
   FORCE_FLAG="--force"

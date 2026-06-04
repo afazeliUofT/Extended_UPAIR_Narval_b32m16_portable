@@ -15,17 +15,22 @@ fi
 CONFIG="${UPAIR_CONFIG:-${UPAIR_REPO_ROOT}/configs/twc_comprehensive_mu32_base.yaml}"
 [[ -f "${CONFIG}" ]] || { echo "[STAGE-B] Missing config: ${CONFIG}" >&2; exit 1; }
 
-A_PREFIX="${UPAIR_OPTUNA_STAGEA_PREFIX:-clean_b32_prb8_d256_u34610_1dmrs_stageA}"
-B_PREFIX="${UPAIR_OPTUNA_STAGEB_PREFIX:-clean_b32_prb8_d256_u34610_1dmrs_stageB}"
-TRIALS="${UPAIR_OPTUNA_STAGEB_TRIALS:-8}"
-STEPS="${UPAIR_OPTUNA_STAGEB_STEPS:-10000}"
-SOURCE_TOP_K="${UPAIR_OPTUNA_STAGEB_SOURCE_TOP_K:-8}"
-MAX_ATTEMPTS="${UPAIR_OPTUNA_STAGEB_MAX_ATTEMPTS:-${TRIALS}}"
-TIME_LIMIT="${UPAIR_TIME_STAGE_B:-12:00:00}"
+A_PREFIX="${UPAIR_OPTUNA_STAGEA_PREFIX:-clean_b32_prb8_d256_40k_smart_u34610_1dmrs_stageA}"
+B_PREFIX="${UPAIR_OPTUNA_STAGEB_PREFIX:-clean_b32_prb8_d256_40k_smart_u34610_1dmrs_stageB}"
+TRIALS="${UPAIR_OPTUNA_STAGEB_TRIALS:-6}"
+STEPS="${UPAIR_OPTUNA_STAGEB_STEPS:-12000}"
+SOURCE_TOP_K="${UPAIR_OPTUNA_STAGEB_SOURCE_TOP_K:-6}"
+MAX_ATTEMPTS="${UPAIR_OPTUNA_STAGEB_MAX_ATTEMPTS:-$((TRIALS + 4))}"
+TIME_LIMIT="${UPAIR_TIME_STAGE_B:-30:00:00}"
 SEED="${UPAIR_SEED:-7}"
 TRAIN_B="${UPAIR_TRAIN_BATCH:-32}"
 VAL_B="${UPAIR_VAL_BATCH:-32}"
 VAL_MB="${UPAIR_VAL_MICROBATCH:-16}"
+TPE_STARTUP="${UPAIR_OPTUNA_STAGEB_TPE_STARTUP_TRIALS:-4}"
+PRUNER_STARTUP="${UPAIR_OPTUNA_STAGEB_PRUNER_STARTUP_TRIALS:-4}"
+PRUNER_MIN_TRIALS="${UPAIR_OPTUNA_STAGEB_PRUNER_MIN_TRIALS:-3}"
+OBJECTIVE_RECENT_K="${UPAIR_OPTUNA_STAGEB_OBJECTIVE_RECENT_K:-3}"
+OBJECTIVE_MIN_STEP="${UPAIR_OPTUNA_STAGEB_OBJECTIVE_MIN_STEP:-2000}"
 
 echo "[STAGE-B] ROOT=${UPAIR_REPO_ROOT}"
 echo "[STAGE-B] VENV=${UPAIR_VENV_PATH}"
@@ -67,7 +72,12 @@ python -u "${UPAIR_REPO_ROOT}/scripts/run_optuna_1dmrs_structure_isolated.py" \
   --train-batch-size "${TRAIN_B}" \
   --validation-batch-size "${VAL_B}" \
   --validation-microbatch-size "${VAL_MB}" \
-  --seed "${SEED}"
+  --seed "${SEED}" \
+  --tpe-startup-trials "${TPE_STARTUP}" \
+  --pruner-startup-trials "${PRUNER_STARTUP}" \
+  --pruner-min-trials "${PRUNER_MIN_TRIALS}" \
+  --objective-recent-k "${OBJECTIVE_RECENT_K}" \
+  --objective-min-step "${OBJECTIVE_MIN_STEP}"
 SBATCH
   echo "[STAGE-B] submitting ${variant} -> ${study}"
   upair_submit_job_script "${jobfile}"

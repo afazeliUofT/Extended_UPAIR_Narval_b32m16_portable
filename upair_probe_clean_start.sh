@@ -114,9 +114,15 @@ grep -q -- '--require-optuna-best' upair_submit_train_eval_all.sh \
   && check_ok "train/eval wrapper requires external Optuna best parameters" \
   || check_fail "train/eval wrapper does not force --require-optuna-best"
 
-grep -q 'clean_b32_prb8_d256_u34610_1dmrs_stageB' upair_submit_train_eval_all.sh \
-  && check_ok "train/eval wrapper is wired to Stage-B prefix" \
-  || check_fail "train/eval wrapper is not wired to Stage-B prefix"
+expected_stageb_prefix="${UPAIR_OPTUNA_STAGEB_PREFIX:-clean_b32_prb8_d256_40k_smart_u34610_1dmrs_stageB}"
+if grep -q "${expected_stageb_prefix}" upair_submit_train_eval_all.sh; then
+  check_ok "train/eval wrapper is wired to expected Stage-B prefix: ${expected_stageb_prefix}"
+else
+  echo "[DEBUG] Expected Stage-B prefix: ${expected_stageb_prefix}" >&2
+  echo "[DEBUG] Current B_PREFIX lines:" >&2
+  grep -n 'B_PREFIX\|stageB' upair_submit_train_eval_all.sh >&2 || true
+  check_fail "train/eval wrapper is not wired to expected Stage-B prefix"
+fi
 
 if [[ "${fail}" != "0" ]]; then
   echo "[PROBE] FAILED clean-start probe" >&2

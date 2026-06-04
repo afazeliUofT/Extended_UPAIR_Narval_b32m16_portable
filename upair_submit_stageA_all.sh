@@ -15,15 +15,20 @@ fi
 CONFIG="${UPAIR_CONFIG:-${UPAIR_REPO_ROOT}/configs/twc_comprehensive_mu32_base.yaml}"
 [[ -f "${CONFIG}" ]] || { echo "[STAGE-A] Missing config: ${CONFIG}" >&2; exit 1; }
 
-PREFIX="${UPAIR_OPTUNA_STAGEA_PREFIX:-clean_b32_prb8_d256_u34610_1dmrs_stageA}"
-TRIALS="${UPAIR_OPTUNA_STAGEA_TRIALS:-30}"
-STEPS="${UPAIR_OPTUNA_STAGEA_STEPS:-6000}"
-MAX_ATTEMPTS="${UPAIR_OPTUNA_STAGEA_MAX_ATTEMPTS:-${TRIALS}}"
-TIME_LIMIT="${UPAIR_TIME_STAGE_A:-12:00:00}"
+PREFIX="${UPAIR_OPTUNA_STAGEA_PREFIX:-clean_b32_prb8_d256_40k_smart_u34610_1dmrs_stageA}"
+TRIALS="${UPAIR_OPTUNA_STAGEA_TRIALS:-20}"
+STEPS="${UPAIR_OPTUNA_STAGEA_STEPS:-4000}"
+MAX_ATTEMPTS="${UPAIR_OPTUNA_STAGEA_MAX_ATTEMPTS:-$((TRIALS + 10))}"
+TIME_LIMIT="${UPAIR_TIME_STAGE_A:-30:00:00}"
 SEED="${UPAIR_SEED:-7}"
 TRAIN_B="${UPAIR_TRAIN_BATCH:-32}"
 VAL_B="${UPAIR_VAL_BATCH:-32}"
 VAL_MB="${UPAIR_VAL_MICROBATCH:-16}"
+TPE_STARTUP="${UPAIR_OPTUNA_TPE_STARTUP_TRIALS:-8}"
+PRUNER_STARTUP="${UPAIR_OPTUNA_PRUNER_STARTUP_TRIALS:-6}"
+PRUNER_MIN_TRIALS="${UPAIR_OPTUNA_PRUNER_MIN_TRIALS:-4}"
+OBJECTIVE_RECENT_K="${UPAIR_OPTUNA_OBJECTIVE_RECENT_K:-2}"
+OBJECTIVE_MIN_STEP="${UPAIR_OPTUNA_OBJECTIVE_MIN_STEP:-1000}"
 
 echo "[STAGE-A] ROOT=${UPAIR_REPO_ROOT}"
 echo "[STAGE-A] VENV=${UPAIR_VENV_PATH}"
@@ -55,7 +60,12 @@ python -u "${UPAIR_REPO_ROOT}/scripts/run_optuna_1dmrs_structure_isolated.py" \
   --train-batch-size "${TRAIN_B}" \
   --validation-batch-size "${VAL_B}" \
   --validation-microbatch-size "${VAL_MB}" \
-  --seed "${SEED}"
+  --seed "${SEED}" \
+  --tpe-startup-trials "${TPE_STARTUP}" \
+  --pruner-startup-trials "${PRUNER_STARTUP}" \
+  --pruner-min-trials "${PRUNER_MIN_TRIALS}" \
+  --objective-recent-k "${OBJECTIVE_RECENT_K}" \
+  --objective-min-step "${OBJECTIVE_MIN_STEP}"
 SBATCH
   echo "[STAGE-A] submitting ${variant} -> ${study}"
   upair_submit_job_script "${jobfile}"

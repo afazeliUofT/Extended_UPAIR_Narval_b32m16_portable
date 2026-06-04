@@ -32,3 +32,14 @@ upair_portable_wrappers.sha256
 upair_freeze_fix_patch.sh
 upair_freeze_fix_patch.sha256
 *.before_freeze_fix
+
+# UPAIR generated runtime outputs and patch scratch
+TWC_plots_comprehensive/
+logs/
+outputs/
+plots/
+metrics/
+*.out
+*.err
+*.log
+patch_backups/
