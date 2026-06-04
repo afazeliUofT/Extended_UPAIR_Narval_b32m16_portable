@@ -1,0 +1,17 @@
+user,dmrs_port_set,ofdm_symbol,subcarrier_local_0_to_11,subcarrier_global,real,imag,formatted_for_plot,extraction_mode
+1,[0],2,0,0,1.2247449159622192,1.2247449159622192,+1.22 +1.22j,actual_pusch_config_dmrs_grid
+1,[0],2,1,1,1.2247449159622192,1.2247449159622192,+1.22 +1.22j,actual_pusch_config_dmrs_grid
+1,[0],2,6,6,-1.2247449159622192,-1.2247449159622192,-1.22 -1.22j,actual_pusch_config_dmrs_grid
+1,[0],2,7,7,-1.2247449159622192,1.2247449159622192,-1.22 +1.22j,actual_pusch_config_dmrs_grid
+2,[1],2,0,0,1.2247449159622192,1.2247449159622192,+1.22 +1.22j,actual_pusch_config_dmrs_grid
+2,[1],2,1,1,-1.2247449159622192,-1.2247449159622192,-1.22 -1.22j,actual_pusch_config_dmrs_grid
+2,[1],2,6,6,-1.2247449159622192,-1.2247449159622192,-1.22 -1.22j,actual_pusch_config_dmrs_grid
+2,[1],2,7,7,1.2247449159622192,-1.2247449159622192,+1.22 -1.22j,actual_pusch_config_dmrs_grid
+3,[2],2,2,2,1.2247449159622192,1.2247449159622192,+1.22 +1.22j,actual_pusch_config_dmrs_grid
+3,[2],2,3,3,1.2247449159622192,1.2247449159622192,+1.22 +1.22j,actual_pusch_config_dmrs_grid
+3,[2],2,8,8,-1.2247449159622192,-1.2247449159622192,-1.22 -1.22j,actual_pusch_config_dmrs_grid
+3,[2],2,9,9,-1.2247449159622192,1.2247449159622192,-1.22 +1.22j,actual_pusch_config_dmrs_grid
+4,[3],2,2,2,1.2247449159622192,1.2247449159622192,+1.22 +1.22j,actual_pusch_config_dmrs_grid
+4,[3],2,3,3,-1.2247449159622192,-1.2247449159622192,-1.22 -1.22j,actual_pusch_config_dmrs_grid
+4,[3],2,8,8,-1.2247449159622192,-1.2247449159622192,-1.22 -1.22j,actual_pusch_config_dmrs_grid
+4,[3],2,9,9,1.2247449159622192,-1.2247449159622192,+1.22 -1.22j,actual_pusch_config_dmrs_grid

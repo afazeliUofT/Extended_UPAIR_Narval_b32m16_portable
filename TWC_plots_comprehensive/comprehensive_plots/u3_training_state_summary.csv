@@ -1,0 +1,8 @@
+scenario,variant,run_dir,train_state_exists,best_weights_exists,latest_step,total_steps,training_complete,best_val,history_exists
+U3,main_d96_b4_r2,/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/main_d96_b4_r2,True,True,20000,20000,True,0.03306618961505592,True
+U3,shallow_d96_b2_r2,/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2,True,True,20000,20000,True,0.03681142255663872,True
+U3,deep_d96_b6_r2,/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2,True,True,20000,20000,True,0.03193441157054622,True
+U3,narrow_d64_b4_r2,/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/narrow_d64_b4_r2,True,True,20000,20000,True,0.04741261408586676,True
+U3,wide_d128_b4_r2,/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/wide_d128_b4_r2,True,True,20000,20000,True,0.026577678038544644,True
+U3,wide_deep_d128_b6_r2,/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/wide_deep_d128_b6_r2,True,True,20000,20000,True,0.025611696915196564,True
+U3,mlpwide_d96_b4_r4,/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/mlpwide_d96_b4_r4,True,True,20000,20000,True,0.03275969598810965,True

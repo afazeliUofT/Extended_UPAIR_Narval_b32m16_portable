@@ -1,0 +1,48 @@
+====================================================================================================
+TWC comprehensive plot report: U3
+====================================================================================================
+root: /lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16
+config: /lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16/configs/twc_comprehensive_mu32_base_narval_stageB_locked_bleronly_compiled_mb16.yaml
+eval_users: 3
+eval_snr_grid: [-5, -4, -3, -2, -1, 0, 0.5]
+train_snr_range: [-6.0, 5.0]
+
+Sanity: training completion
+  main_d96_b4_r2           complete=True latest=20000 total=20000 best_weights=True best_val=0.03306618961505592
+  shallow_d96_b2_r2        complete=True latest=20000 total=20000 best_weights=True best_val=0.03681142255663872
+  deep_d96_b6_r2           complete=True latest=20000 total=20000 best_weights=True best_val=0.03193441157054622
+  narrow_d64_b4_r2         complete=True latest=20000 total=20000 best_weights=True best_val=0.04741261408586676
+  wide_d128_b4_r2          complete=True latest=20000 total=20000 best_weights=True best_val=0.026577678038544644
+  wide_deep_d128_b6_r2     complete=True latest=20000 total=20000 best_weights=True best_val=0.025611696915196564
+  mlpwide_d96_b4_r4        complete=True latest=20000 total=20000 best_weights=True best_val=0.03275969598810965
+
+Sanity: evaluation rows
+  eval rows: 196
+  variants with eval rows: ['deep_d96_b6_r2', 'main_d96_b4_r2', 'mlpwide_d96_b4_r4', 'narrow_d64_b4_r2', 'shallow_d96_b2_r2', 'wide_d128_b4_r2', 'wide_deep_d128_b6_r2']
+  receivers: ['baseline_ls_2dlmmse_lmmse', 'baseline_ls_lmmse', 'perfect_csi_lmmse', 'upair5g_lmmse']
+  SNRs found: [-5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 0.5]
+  zero-BLER points hidden in plots: 7
+
+Best UPAIR ablation by average log-BLER AUC:
+  wide_deep_d128_b6_r2: Wide-deep d128-b6-r2
+
+Continuation-training insight
+  main_d96_b4_r2           hint=continue_promising best_step=19000 last_step=20000 tail_improvement=0.00040338628847772645 slope_per_1000=-0.000322798628032959
+  shallow_d96_b2_r2        hint=likely_plateau_or_noisy best_step=14000 last_step=20000 tail_improvement=-0.0020780313158563005 slope_per_1000=0.0002602601784192735
+  deep_d96_b6_r2           hint=likely_plateau_or_noisy best_step=14000 last_step=20000 tail_improvement=-0.0004146268571882175 slope_per_1000=0.0003844686029922391
+  narrow_d64_b4_r2         hint=maybe_continue_best_recent best_step=15000 last_step=20000 tail_improvement=-0.002594988996474319 slope_per_1000=0.0006378663958251135
+  wide_d128_b4_r2          hint=likely_plateau_or_noisy best_step=14000 last_step=20000 tail_improvement=0.0002622266038088128 slope_per_1000=-9.947332755906215e-05
+  wide_deep_d128_b6_r2     hint=continue_promising best_step=20000 last_step=20000 tail_improvement=0.0019025416066955764 slope_per_1000=-0.0003237506763057199
+  mlpwide_d96_b4_r4        hint=maybe_continue_best_recent best_step=15000 last_step=20000 tail_improvement=-0.004209387232137096 slope_per_1000=0.0004069518270989541
+
+Generated files:
+  01_u3_bler_upair_ablation.pdf
+  02_u3_bler_receivers_best_variant.pdf
+  03_u3_bler_receiver_grid_all_variants.pdf
+  04_u3_latency_receivers_best_variant.pdf
+  05_u3_latency_upair_ablation.pdf
+  06_u3_latency_bler_tradeoff_upair.pdf
+  07_u3_training_metric_all_variants.pdf
+  08_u3_training_tail_improvement.pdf
+  09_u3_eval_gpu_peak_by_variant.pdf
+  10_u3_main_summary_panels.pdf

@@ -1,0 +1,8 @@
+variant,upair_log10_bler_auc,upair_min_positive_bler,upair_points,upair_positive_points,upair_zero_points
+wide_deep_d128_b6_r2,-2.580010870319714,4.6875e-05,5,5,0
+deep_d96_b6_r2,-2.5467806951210794,5.46875e-05,5,5,0
+mlpwide_d96_b4_r4,-2.544900748656936,5.078125e-05,5,5,0
+wide_d128_b4_r2,-2.506437477034057,5.46875e-05,5,5,0
+main_d96_b4_r2,-2.4763617354723153,7.8125e-05,5,5,0
+shallow_d96_b2_r2,-2.3847470357966696,9.375e-05,5,5,0
+narrow_d64_b4_r2,-2.1178280732692913,0.00021875,5,5,0

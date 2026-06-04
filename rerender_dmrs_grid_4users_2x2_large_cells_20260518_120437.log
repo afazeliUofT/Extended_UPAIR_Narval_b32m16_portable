@@ -1,0 +1,36 @@
+============================================================
+RERENDER 4-USER DMRS GRID: 2x2 LARGE-CELL VERSION
+============================================================
+ROOT=/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable
+PLOT_DIR=/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots
+CSV_IN=/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_values.csv
+FIG_W=13.2
+FIG_H=10.8
+VALUE_FONTSIZE=4.8
+
+Removing old bad DMRS figure files...
+============================================================
+CORRECTED 2x2 DMRS FIGURE GENERATED
+============================================================
+PNG main:       /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc.png
+PDF main:       /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc.pdf
+PNG 2x2 copy:   /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_2x2.png
+PDF 2x2 copy:   /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_2x2.pdf
+CSV used:       /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_2x2_values_used.csv
+Report:         /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_2x2_report.txt
+
+DMRS counts per user:
+  User 1: 4 DMRS REs, port set=[0]
+  User 2: 4 DMRS REs, port set=[1]
+  User 3: 4 DMRS REs, port set=[2]
+  User 4: 4 DMRS REs, port set=[3]
+
+============================================================
+Generated files
+============================================================
+-rw-r-----. 1 rsadve1 rsadve1  38K May 18 12:05 /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_2x2.pdf
+-rw-r-----. 1 rsadve1 rsadve1 354K May 18 12:05 /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_2x2.png
+-rw-r-----. 1 rsadve1 rsadve1 1.6K May 18 12:05 /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_2x2_report.txt
+-rw-r-----. 1 rsadve1 rsadve1 1.7K May 18 12:05 /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc_2x2_values_used.csv
+-rw-r-----. 1 rsadve1 rsadve1  38K May 18 12:05 /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc.pdf
+-rw-r-----. 1 rsadve1 rsadve1 354K May 18 12:05 /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/comprehensive_plots/dmrs_grid_4users_14sym_12sc.png

@@ -1,0 +1,121 @@
+============================================================
+Portable UPAIR package summary
+============================================================
+ROOT=/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable
+
+Total size:
+1.1M	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable
+
+Top-level directories:
+816K	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive
+56K	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src
+55K	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/slurm
+34K	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/scripts
+29K	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/optuna
+28K	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/configs
+4.0K	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/manifest
+1.5K	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/portable_tools
+512	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/requirements.txt
+512	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/requirements-narval.txt
+512	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/README_NARVAL_OPTUNA.md
+512	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/README_NARVAL_B32_MICRO16.md
+512	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/README_CLEAN_OPTUNA_MEMORY_FIX.md
+512	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/README_CLEAN_OPTUNA.md
+512	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/pyproject.toml
+512	/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/PORTABLE_README.md
+
+Best weights:
+     SIZE_MB  PATH
+        2.61  /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/main_d96_b4_r2/checkpoints/best.weights.h5
+        4.36  /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/wide_d128_b4_r2/checkpoints/best.weights.h5
+        3.18  /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/mlpwide_d96_b4_r4/checkpoints/best.weights.h5
+        6.39  /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/wide_deep_d128_b6_r2/checkpoints/best.weights.h5
+        1.34  /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/narrow_d64_b4_r2/checkpoints/best.weights.h5
+        3.81  /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/best.weights.h5
+        1.42  /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/best.weights.h5
+
+Stage-B locked Optuna best JSON files:
+clean_b32_iso_u34610_1dmrs_stageB_locked_deep_d96_b6_r2_best_params.json
+clean_b32_iso_u34610_1dmrs_stageB_locked_main_d96_b4_r2_best_params.json
+clean_b32_iso_u34610_1dmrs_stageB_locked_mlpwide_d96_b4_r4_best_params.json
+clean_b32_iso_u34610_1dmrs_stageB_locked_narrow_d64_b4_r2_best_params.json
+clean_b32_iso_u34610_1dmrs_stageB_locked_shallow_d96_b2_r2_best_params.json
+clean_b32_iso_u34610_1dmrs_stageB_locked_wide_d128_b4_r2_best_params.json
+clean_b32_iso_u34610_1dmrs_stageB_locked_wide_deep_d128_b6_r2_best_params.json
+
+Plots/results:
+01_u3_bler_upair_ablation.pdf
+01_u3_bler_upair_ablation.png
+02_u3_bler_receivers_best_variant.pdf
+02_u3_bler_receivers_best_variant.png
+03_u3_bler_receiver_grid_all_variants.pdf
+03_u3_bler_receiver_grid_all_variants.png
+04_u3_latency_receivers_best_variant.pdf
+04_u3_latency_receivers_best_variant.png
+05_u3_latency_upair_ablation.pdf
+05_u3_latency_upair_ablation.png
+06_u3_latency_bler_tradeoff_upair_data_used.csv
+06_u3_latency_bler_tradeoff_upair.pdf
+06_u3_latency_bler_tradeoff_upair.png
+07_u3_training_metric_all_variants.pdf
+07_u3_training_metric_all_variants.png
+08_u3_training_tail_improvement.pdf
+08_u3_training_tail_improvement.png
+09_u3_eval_gpu_peak_by_variant.pdf
+09_u3_eval_gpu_peak_by_variant.png
+10_u3_main_summary_panels.pdf
+10_u3_main_summary_panels.png
+U2_comprehensive plots/01_u2_bler_upair_ablation.pdf
+U2_comprehensive plots/01_u2_bler_upair_ablation.png
+U2_comprehensive plots/02_u2_bler_receivers_best_variant.pdf
+U2_comprehensive plots/02_u2_bler_receivers_best_variant.png
+U2_comprehensive plots/03_u2_bler_receiver_grid_all_variants.pdf
+U2_comprehensive plots/03_u2_bler_receiver_grid_all_variants.png
+U2_comprehensive plots/04_u2_latency_receivers_best_variant.pdf
+U2_comprehensive plots/04_u2_latency_receivers_best_variant.png
+U2_comprehensive plots/05_u2_latency_upair_ablation.pdf
+U2_comprehensive plots/05_u2_latency_upair_ablation.png
+U2_comprehensive plots/06_u2_latency_bler_tradeoff_upair_data_used.csv
+U2_comprehensive plots/06_u2_latency_bler_tradeoff_upair.pdf
+U2_comprehensive plots/06_u2_latency_bler_tradeoff_upair.png
+U2_comprehensive plots/07_u2_training_metric_all_variants.pdf
+U2_comprehensive plots/07_u2_training_metric_all_variants.png
+U2_comprehensive plots/08_u2_training_tail_improvement.pdf
+U2_comprehensive plots/08_u2_training_tail_improvement.png
+U2_comprehensive plots/09_u2_eval_gpu_peak_by_variant.pdf
+U2_comprehensive plots/09_u2_eval_gpu_peak_by_variant.png
+U2_comprehensive plots/10_u2_main_summary_panels.pdf
+U2_comprehensive plots/10_u2_main_summary_panels.png
+U2_comprehensive plots/u2_ablation_summary.csv
+U2_comprehensive plots/u2_all_extracted_eval_rows_raw.csv
+U2_comprehensive plots/u2_evaluation_points.csv
+U2_comprehensive plots/u2_latency_summary.csv
+U2_comprehensive plots/u2_plot_generation_report.txt
+U2_comprehensive plots/u2_snr_gain_bler1e3_curves_used.csv
+U2_comprehensive plots/u2_snr_gain_bler1e3_vs_2dlmmse_clean.csv
+U2_comprehensive plots/u2_snr_gain_bler1e3_vs_2dlmmse_clean.pdf
+U2_comprehensive plots/u2_snr_gain_bler1e3_vs_2dlmmse_clean.png
+U2_comprehensive plots/u2_snr_gain_bler1e3_vs_2dlmmse.csv
+U2_comprehensive plots/u2_snr_gain_bler1e3_vs_2dlmmse.pdf
+U2_comprehensive plots/u2_snr_gain_bler1e3_vs_2dlmmse.png
+U2_comprehensive plots/u2_snr_gain_bler1e3_vs_2dlmmse_report.txt
+U2_comprehensive plots/u2_training_continuation_insights.csv
+U2_comprehensive plots/u2_training_points.csv
+U2_comprehensive plots/u2_training_state_summary.csv
+u3_ablation_summary.csv
+u3_evaluation_points.csv
+u3_latency_summary.csv
+u3_plot_generation_report.txt
+u3_snr_gain_bler1e3_curves_used.csv
+u3_snr_gain_bler1e3_vs_2dlmmse_clean.csv
+u3_snr_gain_bler1e3_vs_2dlmmse_clean.pdf
+u3_snr_gain_bler1e3_vs_2dlmmse_clean.png
+u3_snr_gain_bler1e3_vs_2dlmmse.csv
+u3_snr_gain_bler1e3_vs_2dlmmse_diagnostic.pdf
+u3_snr_gain_bler1e3_vs_2dlmmse_diagnostic.png
+u3_snr_gain_bler1e3_vs_2dlmmse.pdf
+u3_snr_gain_bler1e3_vs_2dlmmse.png
+u3_snr_gain_bler1e3_vs_2dlmmse_report.txt
+u3_training_continuation_insights.csv
+u3_training_points.csv
+u3_training_state_summary.csv

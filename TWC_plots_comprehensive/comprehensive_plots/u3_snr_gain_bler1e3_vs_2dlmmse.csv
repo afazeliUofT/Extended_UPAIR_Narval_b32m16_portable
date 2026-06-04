@@ -1,0 +1,8 @@
+rank,variant,variant_label,snr_2dlmmse_at_1e3_db,snr_upair_at_1e3_db,snr_gain_db,upair_status,baseline_status,upair_method,baseline_method,upair_min_bler,baseline_min_bler,upair_points_used,baseline_points_used
+1,wide_deep_d128_b6_r2,Wide-deep d128-b6-r2,-0.11228890652811474,-0.9631104237352197,0.850821517207105,interpolated,interpolated,bracketed_log_linear,bracketed_log_linear,9.996801023672424e-05,0.00034516105488516935,2,2
+2,wide_d128_b4_r2,Wide d128-b4-r2,-0.11228890652811474,-0.8291528846287666,0.7168639781006518,interpolated,interpolated,bracketed_log_linear,bracketed_log_linear,0.00011662934527617829,0.00034516105488516935,2,2
+3,deep_d96_b6_r2,Deep d96-b6-r2,-0.11228890652811474,-0.5145476142084486,0.4022587076803339,interpolated,interpolated,bracketed_log_linear,bracketed_log_linear,0.00014328748133930476,0.00034516105488516935,2,2
+4,main_d96_b4_r2,Main d96-b4-r2,-0.11228890652811474,-0.48037733747118816,0.3680884309430734,interpolated,interpolated,bracketed_log_linear,bracketed_log_linear,0.0001966037534655577,0.00034516105488516935,2,2
+5,mlpwide_d96_b4_r4,MLP-wide d96-b4-r4,-0.11228890652811474,-0.37046282369005756,0.2581739171619428,interpolated,interpolated,bracketed_log_linear,bracketed_log_linear,0.00014661974834719556,0.00034516105488516935,2,2
+6,shallow_d96_b2_r2,Shallow d96-b2-r2,-0.11228890652811474,-0.2898410654878876,0.17755215895977283,interpolated,interpolated,bracketed_log_linear,bracketed_log_linear,0.0001932714864576669,0.00034516105488516935,2,2
+7,narrow_d64_b4_r2,Narrow d64-b4-r2,-0.11228890652811474,0.1344770274260527,-0.24676593395416743,interpolated,interpolated,bracketed_log_linear,bracketed_log_linear,0.0005081300813008131,0.00034516105488516935,2,2

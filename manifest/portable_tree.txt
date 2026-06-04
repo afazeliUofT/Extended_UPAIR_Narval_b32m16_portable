@@ -1,0 +1,161 @@
+[ 25K]  /home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable.clean_stage_20260518_102421
+├── [ 25K]  configs
+│   ├── [5.0K]  twc_comprehensive_mu32_base_narval_stageB_locked_bleronly_compiled_mb16.yaml
+│   ├── [5.0K]  twc_comprehensive_mu32_base_narval_stageB_locked_u2_bleronly_compiled_mb16.yaml
+│   ├── [5.0K]  twc_comprehensive_mu32_base.yaml
+│   ├── [5.0K]  twc_comprehensive_mu32_eval_safe.yaml
+│   ├── [4.7K]  twc_comprehensive_mu32_rf_mixed_u3_1dmrs_eval_safe.yaml
+│   └── [4.6K]  twc_comprehensive_mu32_rf_mixed_u3_1dmrs.yaml
+├── [1.0K]  manifest
+│   └── [   0]  portable_tree.txt
+├── [ 25K]  optuna
+│   ├── [8.6K]  clean_b32_iso_u34610_1dmrs_stageB_locked_deep_d96_b6_r2_best_params.json
+│   ├── [8.7K]  clean_b32_iso_u34610_1dmrs_stageB_locked_main_d96_b4_r2_best_params.json
+│   ├── [8.9K]  clean_b32_iso_u34610_1dmrs_stageB_locked_mlpwide_d96_b4_r4_best_params.json
+│   ├── [8.6K]  clean_b32_iso_u34610_1dmrs_stageB_locked_narrow_d64_b4_r2_best_params.json
+│   ├── [6.7K]  clean_b32_iso_u34610_1dmrs_stageB_locked_shallow_d96_b2_r2_best_params.json
+│   ├── [8.7K]  clean_b32_iso_u34610_1dmrs_stageB_locked_wide_d128_b4_r2_best_params.json
+│   └── [8.6K]  clean_b32_iso_u34610_1dmrs_stageB_locked_wide_deep_d128_b6_r2_best_params.json
+├── [ 893]  PORTABLE_README.md
+├── [1.0K]  portable_tools
+│   └── [1009]  manifest_summary.sh
+├── [ 389]  pyproject.toml
+├── [1.6K]  README_CLEAN_OPTUNA.md
+├── [2.2K]  README_CLEAN_OPTUNA_MEMORY_FIX.md
+├── [ 759]  README_NARVAL_B32_MICRO16.md
+├── [ 952]  README_NARVAL_OPTUNA.md
+├── [ 222]  requirements-narval.txt
+├── [ 155]  requirements.txt
+├── [ 25K]  scripts
+│   ├── [ 11K]  make_comprehensive_mu32_plots.py
+│   ├── [8.0K]  merge_comprehensive_mu32_results.py
+│   ├── [ 26K]  optuna_1dmrs_common.py
+│   ├── [ 11K]  probe_clean_optuna_package.py
+│   ├── [10.0K]  probe_sionna_rf_impairments.py
+│   ├── [ 28K]  run_comprehensive_mu32_ablation.py
+│   ├── [ 15K]  run_optuna_1dmrs_structure_isolated.py
+│   ├── [ 455]  run_optuna_1dmrs_structure.py
+│   ├── [9.0K]  run_optuna_1dmrs_trial_worker.py
+│   ├── [3.6K]  setup_venv.sh
+│   ├── [1.4K]  smoke_rf_mixed_path.py
+│   ├── [2.1K]  submit_eval_only_u3_safe_narval.sh
+│   ├── [4.6K]  submit_optuna_1dmrs_narval.sh
+│   ├── [3.8K]  submit_optuna_best_u3_narval.sh
+│   ├── [6.0K]  submit_optuna_then_train_eval_u3_narval.sh
+│   ├── [3.1K]  submit_publication_full_narval.sh
+│   ├── [1007]  submit_rf_mixed_optuna_then_train_eval_u3_narval.sh
+│   └── [ 603]  submit_rf_probe_narval.sh
+├── [ 25K]  slurm
+│   └── [ 25K]  narval
+│       ├── [4.0K]  10_train_eval_array.sbatch
+│       ├── [4.2K]  11_train_eval_1dmrs_u3_optuna_best.sbatch
+│       ├── [4.1K]  12_eval_only_1dmrs_u3_optuna_best_safe.sbatch
+│       ├── [7.7K]  13_train_then_eval_stageB_locked_bleronly_byebno_mb16.sbatch
+│       ├── [6.7K]  14_eval_stageB_locked_u4_bleronly_byebno_mb16.sbatch
+│       ├── [6.2K]  16_eval_stageB_locked_u2_bleronly_byebno_mb16.sbatch
+│       ├── [ 994]  20_merge_plot.sbatch
+│       ├── [7.3K]  optuna_1dmrs_structures.sbatch
+│       └── [ 596]  probe_rf_impairments.sbatch
+├── [ 25K]  src
+│   └── [ 25K]  upair5g
+│       ├── [ 13K]  baselines.py
+│       ├── [ 25K]  builders.py
+│       ├── [2.7K]  compat.py
+│       ├── [1.3K]  config.py
+│       ├── [ 13K]  estimator.py
+│       ├── [ 57K]  evaluation.py
+│       ├── [ 15K]  impairments.py
+│       ├── [  48]  __init__.py
+│       ├── [9.4K]  phase_aware.py
+│       ├── [ 32K]  training.py
+│       └── [ 14K]  utils.py
+└── [ 25K]  TWC_plots_comprehensive
+    ├── [1.0K]  comprehensive_plots
+    │   ├── [ 22K]  01_u3_bler_upair_ablation.pdf
+    │   ├── [210K]  01_u3_bler_upair_ablation.png
+    │   ├── [ 21K]  02_u3_bler_receivers_best_variant.pdf
+    │   ├── [153K]  02_u3_bler_receivers_best_variant.png
+    │   ├── [ 38K]  03_u3_bler_receiver_grid_all_variants.pdf
+    │   ├── [431K]  03_u3_bler_receiver_grid_all_variants.png
+    │   ├── [ 15K]  04_u3_latency_receivers_best_variant.pdf
+    │   ├── [120K]  04_u3_latency_receivers_best_variant.png
+    │   ├── [ 16K]  05_u3_latency_upair_ablation.pdf
+    │   ├── [177K]  05_u3_latency_upair_ablation.png
+    │   ├── [ 577]  06_u3_latency_bler_tradeoff_upair_data_used.csv
+    │   ├── [ 19K]  06_u3_latency_bler_tradeoff_upair.pdf
+    │   ├── [181K]  06_u3_latency_bler_tradeoff_upair.png
+    │   ├── [ 20K]  07_u3_training_metric_all_variants.pdf
+    │   ├── [235K]  07_u3_training_metric_all_variants.png
+    │   ├── [ 15K]  08_u3_training_tail_improvement.pdf
+    │   ├── [187K]  08_u3_training_tail_improvement.png
+    │   ├── [ 15K]  09_u3_eval_gpu_peak_by_variant.pdf
+    │   ├── [162K]  09_u3_eval_gpu_peak_by_variant.png
+    │   ├── [ 26K]  10_u3_main_summary_panels.pdf
+    │   ├── [224K]  10_u3_main_summary_panels.png
+    │   ├── [1.0K]  U2_comprehensive plots
+    │   │   ├── [ 21K]  01_u2_bler_upair_ablation.pdf
+    │   │   ├── [248K]  01_u2_bler_upair_ablation.png
+    │   │   ├── [ 21K]  02_u2_bler_receivers_best_variant.pdf
+    │   │   ├── [189K]  02_u2_bler_receivers_best_variant.png
+    │   │   ├── [ 37K]  03_u2_bler_receiver_grid_all_variants.pdf
+    │   │   ├── [538K]  03_u2_bler_receiver_grid_all_variants.png
+    │   │   ├── [ 15K]  04_u2_latency_receivers_best_variant.pdf
+    │   │   ├── [162K]  04_u2_latency_receivers_best_variant.png
+    │   │   ├── [ 16K]  05_u2_latency_upair_ablation.pdf
+    │   │   ├── [245K]  05_u2_latency_upair_ablation.png
+    │   │   ├── [ 538]  06_u2_latency_bler_tradeoff_upair_data_used.csv
+    │   │   ├── [ 20K]  06_u2_latency_bler_tradeoff_upair.pdf
+    │   │   ├── [199K]  06_u2_latency_bler_tradeoff_upair.png
+    │   │   ├── [ 19K]  07_u2_training_metric_all_variants.pdf
+    │   │   ├── [324K]  07_u2_training_metric_all_variants.png
+    │   │   ├── [ 15K]  08_u2_training_tail_improvement.pdf
+    │   │   ├── [291K]  08_u2_training_tail_improvement.png
+    │   │   ├── [ 16K]  09_u2_eval_gpu_peak_by_variant.pdf
+    │   │   ├── [258K]  09_u2_eval_gpu_peak_by_variant.png
+    │   │   ├── [ 25K]  10_u2_main_summary_panels.pdf
+    │   │   ├── [296K]  10_u2_main_summary_panels.png
+    │   │   ├── [ 485]  u2_ablation_summary.csv
+    │   │   ├── [124K]  u2_all_extracted_eval_rows_raw.csv
+    │   │   ├── [ 53K]  u2_evaluation_points.csv
+    │   │   ├── [4.1K]  u2_latency_summary.csv
+    │   │   ├── [3.7K]  u2_plot_generation_report.txt
+    │   │   ├── [2.4K]  u2_snr_gain_bler1e3_curves_used.csv
+    │   │   ├── [ 329]  u2_snr_gain_bler1e3_vs_2dlmmse_clean.csv
+    │   │   ├── [ 25K]  u2_snr_gain_bler1e3_vs_2dlmmse_clean.pdf
+    │   │   ├── [189K]  u2_snr_gain_bler1e3_vs_2dlmmse_clean.png
+    │   │   ├── [ 957]  u2_snr_gain_bler1e3_vs_2dlmmse.csv
+    │   │   ├── [ 25K]  u2_snr_gain_bler1e3_vs_2dlmmse.pdf
+    │   │   ├── [189K]  u2_snr_gain_bler1e3_vs_2dlmmse.png
+    │   │   ├── [1.0K]  u2_snr_gain_bler1e3_vs_2dlmmse_report.txt
+    │   │   ├── [2.0K]  u2_training_continuation_insights.csv
+    │   │   ├── [ 35M]  u2_training_points.csv
+    │   │   └── [1.4K]  u2_training_state_summary.csv
+    │   ├── [ 539]  u3_ablation_summary.csv
+    │   ├── [ 75K]  u3_evaluation_points.csv
+    │   ├── [4.1K]  u3_latency_summary.csv
+    │   ├── [3.4K]  u3_plot_generation_report.txt
+    │   ├── [3.7K]  u3_snr_gain_bler1e3_curves_used.csv
+    │   ├── [ 328]  u3_snr_gain_bler1e3_vs_2dlmmse_clean.csv
+    │   ├── [ 25K]  u3_snr_gain_bler1e3_vs_2dlmmse_clean.pdf
+    │   ├── [183K]  u3_snr_gain_bler1e3_vs_2dlmmse_clean.png
+    │   ├── [1.7K]  u3_snr_gain_bler1e3_vs_2dlmmse.csv
+    │   ├── [ 23K]  u3_snr_gain_bler1e3_vs_2dlmmse_diagnostic.pdf
+    │   ├── [305K]  u3_snr_gain_bler1e3_vs_2dlmmse_diagnostic.png
+    │   ├── [ 25K]  u3_snr_gain_bler1e3_vs_2dlmmse.pdf
+    │   ├── [183K]  u3_snr_gain_bler1e3_vs_2dlmmse.png
+    │   ├── [1.9K]  u3_snr_gain_bler1e3_vs_2dlmmse_report.txt
+    │   ├── [1.9K]  u3_training_continuation_insights.csv
+    │   ├── [ 36M]  u3_training_points.csv
+    │   └── [1.4K]  u3_training_state_summary.csv
+    └── [ 25K]  runs_rx16
+        └── [ 25K]  seed7
+            └── [ 25K]  1dmrs
+                ├── [ 25K]  deep_d96_b6_r2
+                ├── [ 25K]  main_d96_b4_r2
+                ├── [1.0K]  mlpwide_d96_b4_r4
+                ├── [ 25K]  narrow_d64_b4_r2
+                ├── [ 25K]  shallow_d96_b2_r2
+                ├── [ 25K]  wide_d128_b4_r2
+                └── [ 25K]  wide_deep_d128_b6_r2
+
+23 directories, 136 files

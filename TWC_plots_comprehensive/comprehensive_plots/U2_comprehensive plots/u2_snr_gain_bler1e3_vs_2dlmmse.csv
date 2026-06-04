@@ -1,0 +1,8 @@
+variant,variant_label,snr_2dlmmse_at_1e3_db,snr_upair_at_1e3_db,snr_gain_db,upair_status,baseline_status,rank
+wide_deep_d128_b6_r2,Wide-deep d128-b6-r2,-1.8117045599648476,-2.434921008257122,0.6232164482922746,interpolated,interpolated,1
+mlpwide_d96_b4_r4,MLP-wide d96-b4-r4,-1.8117045599648476,-2.434068549827231,0.6223639898623836,interpolated,interpolated,2
+deep_d96_b6_r2,Deep d96-b6-r2,-1.8117045599648476,-2.401757132300167,0.5900525723353196,interpolated,interpolated,3
+wide_d128_b4_r2,Wide d128-b4-r2,-1.8117045599648476,-2.36829016492406,0.5565856049592126,interpolated,interpolated,4
+main_d96_b4_r2,Main d96-b4-r2,-1.8117045599648476,-2.3428174387075815,0.5311128787427339,interpolated,interpolated,5
+shallow_d96_b2_r2,Shallow d96-b2-r2,-1.8117045599648476,-2.1672655890205377,0.3555610290556901,interpolated,interpolated,6
+narrow_d64_b4_r2,Narrow d64-b4-r2,-1.8117045599648476,-1.8434439153879891,0.031739355423141546,interpolated,interpolated,7
