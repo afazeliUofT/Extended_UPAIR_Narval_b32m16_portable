@@ -10,9 +10,6 @@ __pycache__/
 .ipynb_checkpoints/
 
 # UPAIR runtime evidence and generated outputs
-optuna/
-checkpoints/
-artifacts/
 wandb/
 mlruns/
 htmlcov/

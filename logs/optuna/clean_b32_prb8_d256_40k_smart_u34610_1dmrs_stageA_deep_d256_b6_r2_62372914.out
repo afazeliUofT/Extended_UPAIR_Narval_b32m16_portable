@@ -1,0 +1,728 @@
+[ENV] Reusing portable venv: /home/rsadve1/scratch/.vevn_upair_potable
+[ENV] Checking installed package metadata only; TensorFlow/Sionna are not imported here.
+[ENV] Python 3.11.5
+[ENV] numpy 1.26.4+computecanada
+[ENV] pandas 2.2.3+computecanada
+[ENV] matplotlib 3.10.0+computecanada
+[ENV] PyYAML 6.0.2+computecanada
+[ENV] scipy 1.15.1+computecanada
+[ENV] tensorflow 2.15.1+computecanada
+[ENV] sionna-no-rt 1.2.1
+[ENV] optuna 4.8.0+computecanada
+[ENV] Skipping TensorFlow/Sionna import check on this node. Set UPAIR_DEEP_IMPORT_CHECK=1 to test imports explicitly.
+[ENV] Ready: REPO=/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable
+[ENV] Ready: VENV=/home/rsadve1/scratch/.vevn_upair_potable
+/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/optuna/_experimental.py:33: ExperimentalWarning: Argument ``multivariate`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/optuna/_experimental.py:33: ExperimentalWarning: Argument ``group`` is an experimental feature. The interface can change in the future.
+  optuna_warn(
+[I 2026-06-04 17:48:56,634] A new study created in RDB with name: clean_b32_prb8_d256_40k_smart_u34610_1dmrs_stageA_deep_d256_b6_r2
+[OPTUNA-ISO] resume_state stage=A completed_trials=0 pruned_trials=0 finished_trials=0 failed_trials=0 nonfailed_trials=0 n_trials_request=20 max_attempts=30 target_total_trials=20 attempts_to_run=20 steps=4000 trial_process_isolation=1
+[OPTUNA-ISO] starting stage=A trial=0 trial_id=1 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0004983159357242532, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.012154545064008537, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 7.693520676908999e-07, 'nmse_loss_weight': 0.12243400701824686, 'grad_clip_norm': 1.0, 'dropout': 0.007912361628708613, 'residual_scale': 0.3228873595847961}
+[OPTUNA-ISO] launching worker trial=0 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0004983159357242532, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.012154545064008537, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 7.693520676908999e-07, 'nmse_loss_weight': 0.12243400701824686, 'grad_clip_norm': 1.0, 'dropout': 0.007912361628708613, 'residual_scale': 0.3228873595847961}
+2026-06-04 17:50:17.896654: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 17:50:17.897433: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 17:50:17.967012: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 17:50:18.124259: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=0 pid=2482351 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 17:59:09.654281: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 17:59:09.655649: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 17:59:16.456529: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=0: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=0 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=1 trial_id=2 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.0009643418646698049, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 1.2083509754787337e-07, 'nmse_loss_weight': 0.16251789877216094, 'grad_clip_norm': 0.5, 'dropout': 0.10909540498640775, 'residual_scale': 0.22990166745555007}
+[OPTUNA-ISO] launching worker trial=1 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.0009643418646698049, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 1.2083509754787337e-07, 'nmse_loss_weight': 0.16251789877216094, 'grad_clip_norm': 0.5, 'dropout': 0.10909540498640775, 'residual_scale': 0.22990166745555007}
+2026-06-04 18:00:18.504743: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:00:18.504828: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:00:18.506989: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:00:18.516520: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=1 pid=2487086 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:00:23.625092: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:00:23.630056: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:00:23.724281: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=1: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=1 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=2 trial_id=3 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0002210893178410695, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.036430683993363126, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 1.613671536589336e-06, 'nmse_loss_weight': 0.3169058880316735, 'grad_clip_norm': 0.5, 'dropout': 0.03312588579968341, 'residual_scale': 0.4217057595278402}
+[OPTUNA-ISO] launching worker trial=2 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0002210893178410695, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.036430683993363126, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 1.613671536589336e-06, 'nmse_loss_weight': 0.3169058880316735, 'grad_clip_norm': 0.5, 'dropout': 0.03312588579968341, 'residual_scale': 0.4217057595278402}
+2026-06-04 18:01:47.251867: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:01:47.251940: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:01:47.254153: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:01:47.263563: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=2 pid=2488085 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:01:52.375121: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:01:52.378407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:01:52.474708: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=2: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=2 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=3 trial_id=4 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0002150875602723823, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.016301500139320635, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 2.795475110283828e-05, 'nmse_loss_weight': 0.09844608545417897, 'grad_clip_norm': 1.0, 'dropout': 0.049786317412733185, 'residual_scale': 0.1508561283376549}
+[OPTUNA-ISO] launching worker trial=3 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0002150875602723823, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.016301500139320635, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 2.795475110283828e-05, 'nmse_loss_weight': 0.09844608545417897, 'grad_clip_norm': 1.0, 'dropout': 0.049786317412733185, 'residual_scale': 0.1508561283376549}
+2026-06-04 18:03:18.626030: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:03:18.626104: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:03:18.628321: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:03:18.637145: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=3 pid=2489082 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:03:23.857222: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:03:23.858633: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:03:23.948839: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=3: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=3 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=4 trial_id=5 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0004568972058255479, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.02308016679308127, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 9.040091747332144e-06, 'nmse_loss_weight': 0.05813033561196787, 'grad_clip_norm': 0.5, 'dropout': 0.05667887955460827, 'residual_scale': 0.6548860289390384}
+[OPTUNA-ISO] launching worker trial=4 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0004568972058255479, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.02308016679308127, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 9.040091747332144e-06, 'nmse_loss_weight': 0.05813033561196787, 'grad_clip_norm': 0.5, 'dropout': 0.05667887955460827, 'residual_scale': 0.6548860289390384}
+2026-06-04 18:05:54.869976: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:05:54.870062: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:05:54.871865: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:05:54.881548: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=4 pid=2490632 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:06:00.185583: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:06:00.186982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:06:00.280119: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=4: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=4 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=5 trial_id=6 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.0005282942092946875, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.024074361764179382, 'learning_rate_polynomial_power': 1.0905445756134515, 'weight_decay': 3.5182369647795597e-07, 'nmse_loss_weight': 0.0963980983750926, 'grad_clip_norm': 2.0, 'dropout': 0.06268681536019342, 'residual_scale': 0.42637817769796615}
+[OPTUNA-ISO] launching worker trial=5 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.0005282942092946875, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.024074361764179382, 'learning_rate_polynomial_power': 1.0905445756134515, 'weight_decay': 3.5182369647795597e-07, 'nmse_loss_weight': 0.0963980983750926, 'grad_clip_norm': 2.0, 'dropout': 0.06268681536019342, 'residual_scale': 0.42637817769796615}
+2026-06-04 18:08:58.475198: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:08:58.475272: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:08:58.477079: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:08:58.486954: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=5 pid=2492228 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:09:03.648026: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:09:03.651830: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:09:03.744504: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=5: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=5 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=6 trial_id=7 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0006365026066087508, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.021147713205237145, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 3.7197425572222765e-06, 'nmse_loss_weight': 0.2822556432388877, 'grad_clip_norm': 0.5, 'dropout': 0.008310248401180255, 'residual_scale': 0.36424237701172735}
+[OPTUNA-ISO] launching worker trial=6 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0006365026066087508, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.021147713205237145, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 3.7197425572222765e-06, 'nmse_loss_weight': 0.2822556432388877, 'grad_clip_norm': 0.5, 'dropout': 0.008310248401180255, 'residual_scale': 0.36424237701172735}
+2026-06-04 18:10:15.959750: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:10:15.959825: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:10:15.961856: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:10:15.971213: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=6 pid=2492699 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:10:21.201814: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:10:21.203477: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:10:21.300569: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=6: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=6 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=7 trial_id=8 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.0005058088142533644, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 5.13921714698404e-05, 'nmse_loss_weight': 0.2548917054571656, 'grad_clip_norm': 2.0, 'dropout': 0.0066599403735267204, 'residual_scale': 0.47486527925713173}
+[OPTUNA-ISO] launching worker trial=7 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.0005058088142533644, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 5.13921714698404e-05, 'nmse_loss_weight': 0.2548917054571656, 'grad_clip_norm': 2.0, 'dropout': 0.0066599403735267204, 'residual_scale': 0.47486527925713173}
+2026-06-04 18:11:45.260754: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:11:45.260837: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:11:45.263032: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:11:45.274143: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=7 pid=2493658 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:11:50.912916: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:11:50.914213: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:11:51.007090: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=7: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=7 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=8 trial_id=9 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 7.513479625028857e-05, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.01834581147291868, 'learning_rate_polynomial_power': 1.447321363865894, 'weight_decay': 3.627462207555795e-07, 'nmse_loss_weight': 0.27094939587895, 'grad_clip_norm': 0.5, 'dropout': 0.09563416289322772, 'residual_scale': 0.7350838086942694}
+[OPTUNA-ISO] launching worker trial=8 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 7.513479625028857e-05, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.01834581147291868, 'learning_rate_polynomial_power': 1.447321363865894, 'weight_decay': 3.627462207555795e-07, 'nmse_loss_weight': 0.27094939587895, 'grad_clip_norm': 0.5, 'dropout': 0.09563416289322772, 'residual_scale': 0.7350838086942694}
+2026-06-04 18:13:44.100665: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:13:44.100739: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:13:44.102759: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:13:44.111510: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=8 pid=2495179 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:13:49.279822: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:13:49.284530: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:13:49.372999: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=8: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=8 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=9 trial_id=10 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.0008991535464859345, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.0986740723248364, 'learning_rate_polynomial_power': 0.9187578969774176, 'weight_decay': 1.567048697318715e-05, 'nmse_loss_weight': 0.29118835336916, 'grad_clip_norm': 0.5, 'dropout': 0.03378405814181925, 'residual_scale': 0.6347225078721309}
+[OPTUNA-ISO] launching worker trial=9 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.0008991535464859345, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.0986740723248364, 'learning_rate_polynomial_power': 0.9187578969774176, 'weight_decay': 1.567048697318715e-05, 'nmse_loss_weight': 0.29118835336916, 'grad_clip_norm': 0.5, 'dropout': 0.03378405814181925, 'residual_scale': 0.6347225078721309}
+2026-06-04 18:16:29.416363: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:16:29.416441: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:16:29.418458: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:16:29.428202: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=9 pid=2496722 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:16:36.202970: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:16:36.207205: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:16:36.311440: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=9: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=9 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=10 trial_id=11 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 6.120433707145279e-05, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.06597478153310753, 'learning_rate_polynomial_power': 1.255169540917846, 'weight_decay': 2.781128915804306e-07, 'nmse_loss_weight': 0.07620608461227492, 'grad_clip_norm': 2.0, 'dropout': 0.028992349998461977, 'residual_scale': 0.15634794416300746}
+[OPTUNA-ISO] launching worker trial=10 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 6.120433707145279e-05, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.06597478153310753, 'learning_rate_polynomial_power': 1.255169540917846, 'weight_decay': 2.781128915804306e-07, 'nmse_loss_weight': 0.07620608461227492, 'grad_clip_norm': 2.0, 'dropout': 0.028992349998461977, 'residual_scale': 0.15634794416300746}
+2026-06-04 18:17:49.401803: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:17:49.401876: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:17:49.403674: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:17:49.412932: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=10 pid=2497185 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:17:54.608829: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:17:54.610277: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:17:54.700712: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=10: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=10 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=11 trial_id=12 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0005803946501594042, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.010668715648655333, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 7.880322092134426e-07, 'nmse_loss_weight': 0.06543975356752887, 'grad_clip_norm': 1.0, 'dropout': 0.08070732354265352, 'residual_scale': 0.19280381235432437}
+[OPTUNA-ISO] launching worker trial=11 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.0005803946501594042, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.010668715648655333, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 7.880322092134426e-07, 'nmse_loss_weight': 0.06543975356752887, 'grad_clip_norm': 1.0, 'dropout': 0.08070732354265352, 'residual_scale': 0.19280381235432437}
+2026-06-04 18:22:21.023306: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:22:21.023403: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:22:21.025209: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:22:21.033999: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=11 pid=2499570 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:22:26.403780: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:22:26.405232: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:22:26.495116: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=11: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=11 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=12 trial_id=13 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.00026186624863803776, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.015431660309692369, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 4.3199170253386663e-07, 'nmse_loss_weight': 0.0813354921451579, 'grad_clip_norm': 2.0, 'dropout': 0.09937122834563371, 'residual_scale': 0.21412604655398482}
+[OPTUNA-ISO] launching worker trial=12 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.00026186624863803776, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.015431660309692369, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 4.3199170253386663e-07, 'nmse_loss_weight': 0.0813354921451579, 'grad_clip_norm': 2.0, 'dropout': 0.09937122834563371, 'residual_scale': 0.21412604655398482}
+2026-06-04 18:24:42.105842: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:24:42.105916: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:24:42.107936: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:24:42.117471: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=12 pid=2500934 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:24:47.151693: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:24:47.162984: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:24:47.235599: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=12: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=12 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=13 trial_id=14 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.00012032229058430002, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.058158104646140824, 'learning_rate_polynomial_power': 1.4743074469264863, 'weight_decay': 3.0354372592031363e-05, 'nmse_loss_weight': 0.03568346022517038, 'grad_clip_norm': 1.0, 'dropout': 0.03450959305438803, 'residual_scale': 0.5534215310575719}
+[OPTUNA-ISO] launching worker trial=13 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.00012032229058430002, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.058158104646140824, 'learning_rate_polynomial_power': 1.4743074469264863, 'weight_decay': 3.0354372592031363e-05, 'nmse_loss_weight': 0.03568346022517038, 'grad_clip_norm': 1.0, 'dropout': 0.03450959305438803, 'residual_scale': 0.5534215310575719}
+2026-06-04 18:25:28.426190: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:25:28.426267: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:25:28.428420: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:25:28.437632: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=13 pid=2501857 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:25:33.475253: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:25:33.476538: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:25:33.548173: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=13: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=13 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=14 trial_id=15 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.0011029908944023173, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 0.00014247853200416007, 'nmse_loss_weight': 0.09907165797552808, 'grad_clip_norm': 2.0, 'dropout': 0.09824939911479585, 'residual_scale': 0.5319014054578004}
+[OPTUNA-ISO] launching worker trial=14 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.0011029908944023173, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 0.00014247853200416007, 'nmse_loss_weight': 0.09907165797552808, 'grad_clip_norm': 2.0, 'dropout': 0.09824939911479585, 'residual_scale': 0.5319014054578004}
+2026-06-04 18:27:07.252620: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:27:07.252704: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:27:07.254542: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:27:07.264563: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=14 pid=2502806 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:27:12.329187: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:27:12.330751: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:27:12.402823: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=14: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=14 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=15 trial_id=16 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.00010940704344641394, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 9.280599353073857e-06, 'nmse_loss_weight': 0.038852152382577915, 'grad_clip_norm': 0.5, 'dropout': 0.01256535642878925, 'residual_scale': 0.5609424222360683}
+[OPTUNA-ISO] launching worker trial=15 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.00010940704344641394, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 9.280599353073857e-06, 'nmse_loss_weight': 0.038852152382577915, 'grad_clip_norm': 0.5, 'dropout': 0.01256535642878925, 'residual_scale': 0.5609424222360683}
+2026-06-04 18:27:51.889017: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:27:51.889098: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:27:51.891347: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:27:51.901301: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=15 pid=2503232 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:27:56.930471: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:27:56.935274: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:27:57.007974: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=15: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=15 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=16 trial_id=17 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.0006067594007484357, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 3.026162041018191e-07, 'nmse_loss_weight': 0.30755854868046173, 'grad_clip_norm': 0.5, 'dropout': 0.07546216836775764, 'residual_scale': 0.30515369915558743}
+[OPTUNA-ISO] launching worker trial=16 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'constant', 'learning_rate': 0.0006067594007484357, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.05, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 3.026162041018191e-07, 'nmse_loss_weight': 0.30755854868046173, 'grad_clip_norm': 0.5, 'dropout': 0.07546216836775764, 'residual_scale': 0.30515369915558743}
+2026-06-04 18:28:38.501302: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:28:38.501385: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:28:38.503551: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:28:38.512606: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=16 pid=2504191 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:28:43.597287: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:28:43.600785: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:28:43.682746: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=16: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=16 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=17 trial_id=18 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.0007113660007328393, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.07706113013388123, 'learning_rate_polynomial_power': 1.4054211546820508, 'weight_decay': 3.2400194045011847e-06, 'nmse_loss_weight': 0.3724980819614951, 'grad_clip_norm': 1.0, 'dropout': 0.004232800357615529, 'residual_scale': 0.6021111112217505}
+[OPTUNA-ISO] launching worker trial=17 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.0007113660007328393, 'learning_rate_decay_fraction': 1.0, 'learning_rate_final_fraction': 0.07706113013388123, 'learning_rate_polynomial_power': 1.4054211546820508, 'weight_decay': 3.2400194045011847e-06, 'nmse_loss_weight': 0.3724980819614951, 'grad_clip_norm': 1.0, 'dropout': 0.004232800357615529, 'residual_scale': 0.6021111112217505}
+2026-06-04 18:30:31.670486: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:30:31.670576: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:30:31.672429: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:30:31.681424: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=17 pid=2505177 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:30:36.788124: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:30:36.790961: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:30:36.862517: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=17: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=17 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=18 trial_id=19 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.00014593131825737322, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.07271604067456573, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 1.6759812944995475e-06, 'nmse_loss_weight': 0.0829424594390291, 'grad_clip_norm': 2.0, 'dropout': 0.07727855750779468, 'residual_scale': 0.34742972633205726}
+[OPTUNA-ISO] launching worker trial=18 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'cosine_decay', 'learning_rate': 0.00014593131825737322, 'learning_rate_decay_fraction': 0.75, 'learning_rate_final_fraction': 0.07271604067456573, 'learning_rate_polynomial_power': 1.0, 'weight_decay': 1.6759812944995475e-06, 'nmse_loss_weight': 0.0829424594390291, 'grad_clip_norm': 2.0, 'dropout': 0.07727855750779468, 'residual_scale': 0.34742972633205726}
+2026-06-04 18:32:01.520724: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:32:01.520799: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:32:01.522786: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:32:01.532164: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=18 pid=2506124 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:32:06.723637: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:32:06.724978: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:32:06.794978: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=18: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=18 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] starting stage=A trial=19 trial_id=20 params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.0001812695920187732, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.015632472489086415, 'learning_rate_polynomial_power': 1.7112180865374658, 'weight_decay': 2.787354417425784e-07, 'nmse_loss_weight': 0.44853770992925435, 'grad_clip_norm': 2.0, 'dropout': 0.04298706533509463, 'residual_scale': 0.588852767340064}
+[OPTUNA-ISO] launching worker trial=19 pid=<pending> params={'batch_size_train': 32, 'batch_size_eval': 32, 'learning_rate_schedule': 'polynomial_decay', 'learning_rate': 0.0001812695920187732, 'learning_rate_decay_fraction': 1.25, 'learning_rate_final_fraction': 0.015632472489086415, 'learning_rate_polynomial_power': 1.7112180865374658, 'weight_decay': 2.787354417425784e-07, 'nmse_loss_weight': 0.44853770992925435, 'grad_clip_norm': 2.0, 'dropout': 0.04298706533509463, 'residual_scale': 0.588852767340064}
+2026-06-04 18:33:01.315532: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-04 18:33:01.315612: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-04 18:33:01.317979: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-04 18:33:01.327483: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[OPTUNA-WORKER] start trial=19 pid=2507076 TF_GPU_ALLOCATOR=<unset/default> TF_FORCE_GPU_ALLOW_GROWTH=true
+[OPTUNA-WORKER] visible_gpus=[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2026-06-04 18:33:06.428548: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+2026-06-04 18:33:06.430236: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38478 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2026-06-04 18:33:06.502894: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+[OPTUNA-WORKER] failed trial=19: InvalidArgumentError()
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Extended_UPAIR_Narval_b32m16_portable/scripts/run_optuna_1dmrs_trial_worker.py", line 142, in main
+    result = train_model(cfg, validation_callback=_validation_callback_for_trial(args, trial_ref))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 505, in train_model
+    _warmup_estimator(estimator, reference_system, cfg)
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/training.py", line 471, in _warmup_estimator
+    estimator.estimate_with_ls(
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 345, in estimate_with_ls
+    feat, h_ls_btfnu, err_btfnu, _ = self._build_features(y, h_ls, err_ls, no, pilot_mask=pilot_mask)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/Extended_UPAIR_Narval_b32m16_portable/src/upair5g/estimator.py", line 324, in _build_features
+    feat = tf.concat(features, axis=-1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.vevn_upair_potable/lib/python3.11/site-packages/tensorflow/python/framework/ops.py", line 5883, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ConcatV2_N_5_device_/job:localhost/replica:0/task:0/device:GPU:0}} ConcatOp : Dimension 0 in both shapes must be equal: shape[0] = [2,14,96,128] vs. shape[2] = [1,14,96,4] [Op:ConcatV2] name: concat
+[OPTUNA-ISO] FAILED trial=19 returncode=1 status=failed; not counted as finished tuning evidence.
+[OPTUNA] no completed trials; skipping best-params export.
+[OPTUNA-ISO] study: clean_b32_prb8_d256_40k_smart_u34610_1dmrs_stageA_deep_d256_b6_r2
+[OPTUNA-ISO] stage: A
+[OPTUNA-ISO] trials: 20
+[OPTUNA-ISO] completed_trials: 0
+[OPTUNA-ISO] pruned_trials: 0
+[OPTUNA-ISO] finished_trials: 0
+[OPTUNA-ISO] failed_trials: 20
+[OPTUNA] no completed trials; skipping best-params export.
